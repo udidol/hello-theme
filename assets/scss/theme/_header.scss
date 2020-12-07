@@ -8,6 +8,18 @@
 	flex-wrap: wrap;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
+
+	&.header-inverted{
+		flex-direction: row-reverse;
+
+		.site-navigation{
+			justify-content: start;
+		}
+	}
+	
+	&.header-stacked{
+		flex-direction: column;
+	}
 }
 
 .site-branding {
