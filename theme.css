@@ -242,57 +242,61 @@ to override any of the settings in this section, add your styling code in the cu
 
 /* Footer Menu
    ========================================================================== */
-.site-footer .site-branding {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column; }
-
-.site-footer .site-navigation {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  grid-area: nav-menu;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center; }
-  .site-footer .site-navigation ul.menu {
+.site-footer {
+  /* Stacked Footer Settings */ }
+  .site-footer .site-branding {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap; }
-    .site-footer .site-navigation ul.menu li {
-      position: relative;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
+  .site-footer .site-navigation {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    grid-area: nav-menu;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
+    .site-footer .site-navigation ul.menu {
       display: -webkit-box;
       display: -ms-flexbox;
-      display: flex; }
-      .site-footer .site-navigation ul.menu li a {
-        display: block;
-        padding: 0px 15px; }
-
-.site-footer .copyright {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end; }
-  .site-footer .copyright p {
-    margin: 0px; }
+      display: flex;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap; }
+      .site-footer .site-navigation ul.menu li {
+        position: relative;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex; }
+        .site-footer .site-navigation ul.menu li a {
+          display: block;
+          padding: 0px 15px; }
+  .site-footer .copyright {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end; }
+    .site-footer .copyright p {
+      margin: 0px; }
+  .site-footer.footer-stacked .site-branding h4.site-title {
+    text-align: center; }
+  .site-footer.footer-stacked .site-navigation .menu {
+    padding: 0; }
 
 /* Post Item in Archive
    ========================================================================== */

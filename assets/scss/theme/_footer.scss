@@ -27,7 +27,6 @@
 		display: flex;
 		flex-direction: column;
 	}
-
 	.site-navigation {
 		align-items: center;
 		display: flex;
@@ -60,4 +59,17 @@
 			margin: 0px;
 		}
 	}
+
+	/* Stacked Footer Settings */
+	&.footer-stacked{
+		.site-branding h4.site-title {
+			text-align: center;
+		}	
+		.site-navigation {
+			.menu {
+				padding: 0;
+			}
+		}
+	}
+
 }
