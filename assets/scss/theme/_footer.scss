@@ -1,0 +1,63 @@
+.site-footer {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+
+	&.footer-inverted{
+		flex-direction: row-reverse;
+
+		.site-navigation{
+			justify-content: start;
+		}
+	}
+	
+	&.footer-stacked{
+	    align-items: center;
+		flex-direction: column;
+	}
+}
+
+/* Footer Menu
+   ========================================================================== */
+
+.site-footer {
+	.site-branding {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.site-navigation {
+		align-items: center;
+		display: flex;
+		flex-direction: row;
+		grid-area: nav-menu;
+		justify-content: center;
+		
+		ul.menu {
+			display: flex;
+			flex-wrap: wrap;
+
+			li {
+				position: relative;
+				display: flex;
+
+				a {
+					display: block;
+					padding: 0px 15px;
+				}
+			}
+		}
+	}
+
+	.copyright {
+		align-items: center;
+		display: flex;
+		justify-content: flex-end;
+
+		p {
+			margin: 0px;
+		}
+	}
+}
