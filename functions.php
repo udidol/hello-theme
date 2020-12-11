@@ -145,6 +145,7 @@ add_action( 'after_setup_theme', 'hello_elementor_content_width', 0 );
 if ( is_admin() ) {
 	require get_template_directory() . '/includes/admin-functions.php';
 }
+require get_template_directory() . '/includes/elementor-functions.php';
 
 if ( ! function_exists( 'hello_elementor_check_hide_title' ) ) {
 	/**

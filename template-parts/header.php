@@ -11,13 +11,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 $site_name = get_bloginfo( 'name' );
 $tagline   = get_bloginfo( 'description', 'display' );
 ?>
-<header class="site-header" role="banner">
+
+<header class="site-header <?php echo esc_attr( get_header_layout_class() ); ?>" role="banner">
 
 	<div class="site-branding">
 		<?php
-		if ( has_custom_logo() ) {
+		if ( has_custom_logo() && 'yes' == hello_elementor_get_setting( 'site_logo_setting' ) ) {
 			the_custom_logo();
-		} elseif ( $site_name ) {
+		} elseif ( $site_name  && 'yes' == hello_elementor_get_setting( 'tagline' ) ) {
 			?>
 			<h1 class="site-title">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php esc_attr_e( 'Home', 'hello-elementor' ); ?>" rel="home">
