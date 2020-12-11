@@ -12,7 +12,7 @@ $site_name = get_bloginfo( 'name' );
 $tagline   = get_bloginfo( 'description', 'display' );
 ?>
 
-<header class="site-header <?php echo esc_attr( get_header_layout_class() ); ?>" role="banner">
+<header class="site-header <?php echo esc_attr( hello_get_header_layout_class() ); ?>" role="banner">
 
 	<div class="site-branding">
 		<?php
@@ -36,8 +36,8 @@ $tagline   = get_bloginfo( 'description', 'display' );
 	</div>
 
 	<?php if ( has_nav_menu( 'menu-1' ) ) : ?>
-	<nav class="site-navigation" role="navigation">
-		<?php wp_nav_menu( array( 'theme_location' => 'menu-1' ) ); ?>
-	</nav>
+		<nav class="site-navigation" role="navigation">
+			<?php wp_nav_menu( array( 'theme_location' => 'menu-1' ) ); ?>
+		</nav>
 	<?php endif; ?>
 </header>

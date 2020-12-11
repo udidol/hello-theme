@@ -116,7 +116,7 @@ function hello_elementor_get_setting( $setting_id ){
  *
  * @return string
  */
-function get_header_layout_class(){
+function hello_get_header_layout_class(){
 	
 	$header_layout = hello_elementor_get_setting( 'header_layout' );
 	
