@@ -14,23 +14,30 @@ $tagline   = get_bloginfo( 'description', 'display' );
 <footer id="site-footer" class="site-footer <?php echo esc_attr( hello_get_footer_layout_class() ); ?>" role="contentinfo">
 	<div class="site-branding">
 		<?php
-		if ( has_custom_logo() ) {
-			the_custom_logo();
-		} elseif ( $site_name ) {
-			?>
+		if ( 'yes' == hello_elementor_get_setting( 'footer_logo_display' ) ) {
+			if ( has_custom_logo() ) {
+				the_custom_logo();
+			} elseif ( $site_name ) {
+		?>
 			<h4 class="site-title">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php esc_attr_e( 'Home', 'hello-elementor' ); ?>" rel="home">
 					<?php echo esc_html( $site_name ); ?>
 				</a>
 			</h4>
+		<?php
+			}
+		}
+
+		if ( $tagline && 'yes' == hello_elementor_get_setting( 'footer_tagline_display' ) ) {
+		?>
 			<p class="site-description">
-				<?php
-				if ( $tagline ) {
+				<?php 
 					echo esc_html( $tagline );
-				}
 				?>
 			</p>
-		<?php } ?>
+		<?php
+		}
+		?>
 	</div>
 
 	<?php if ( has_nav_menu( 'menu-1' ) ) : ?>

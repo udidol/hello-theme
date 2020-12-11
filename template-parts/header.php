@@ -16,23 +16,30 @@ $tagline   = get_bloginfo( 'description', 'display' );
 
 	<div class="site-branding">
 		<?php
-		if ( has_custom_logo() && 'yes' == hello_elementor_get_setting( 'site_logo_setting' ) ) {
-			the_custom_logo();
-		} elseif ( $site_name  && 'yes' == hello_elementor_get_setting( 'tagline' ) ) {
-			?>
-			<h1 class="site-title">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php esc_attr_e( 'Home', 'hello-elementor' ); ?>" rel="home">
-					<?php echo esc_html( $site_name ); ?>
-				</a>
-			</h1>
+		if ( 'yes' == hello_elementor_get_setting( 'header_logo_display' ) ) {
+			if ( has_custom_logo() ) {
+				the_custom_logo();
+			} elseif ( $site_name  && 'yes' == hello_elementor_get_setting( 'header_tagline_display' ) ) {
+				?>
+				<h1 class="site-title">
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php esc_attr_e( 'Home', 'hello-elementor' ); ?>" rel="home">
+						<?php echo esc_html( $site_name ); ?>
+					</a>
+				</h1>
+		<?php
+			}
+		}
+
+		if ( $tagline && 'yes' == hello_elementor_get_setting( 'header_tagline_display' ) ) {
+		?>
 			<p class="site-description">
-				<?php
-				if ( $tagline ) {
+				<?php 
 					echo esc_html( $tagline );
-				}
 				?>
 			</p>
-		<?php } ?>
+		<?php
+		}
+		?>
 	</div>
 
 	<?php if ( has_nav_menu( 'menu-1' ) ) : ?>
