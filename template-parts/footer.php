@@ -47,6 +47,6 @@ $tagline   = get_bloginfo( 'description', 'display' );
 	<?php endif; ?>
 
 	<div class="copyright">
-		<p><?php _e('All rights reserved', 'hello-elementor'); ?></p>
+		<p><?php echo hello_elementor_get_setting( 'footer_copyright_text' ); ?></p>
 	</div>
 </footer>

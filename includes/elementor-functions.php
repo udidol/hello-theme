@@ -220,7 +220,6 @@ add_action(
 			]
 		);
 		
-		
 		$element->end_controls_section();
 		
 		$element->start_controls_section(
@@ -294,6 +293,27 @@ add_action(
 			]
 		);
 
+		$element->end_controls_section();
+		
+		$element->start_controls_section(
+			'footer_copyright_section',
+			[
+				'tab' => 'settings-layout',
+				'label' => __( 'Footer Copyright', 'hello-elementor' ),
+				'condition'   => [
+                    'footer_copyright_display' => 'yes',
+                ],
+			]
+		);
+		
+		$element->add_control(
+			'footer_copyright_text',
+			[
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'default' => 'All rights reserved',
+			]
+		);
+
 		$element->add_control(
 			'footer_copyright_color',
 			[
@@ -319,6 +339,7 @@ add_action(
 				'selector' => '.site-footer .copyright p',
 			]
 		);
+		
 		
 		$element->end_controls_section();
 	},
