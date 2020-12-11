@@ -131,3 +131,24 @@ function hello_get_header_layout_class(){
 	
 	return $return;
 }
+
+/**
+ * Helper function to translate the footer layout setting into a class name.
+ *
+ * @return string
+ */
+function hello_get_footer_layout_class(){
+	
+	$header_layout = hello_elementor_get_setting( 'footer_layout' );
+	
+	$return = '';
+	
+	if ( 'invert' == $header_layout ){
+		$return = 'footer-inverted';
+	}
+	elseif ( 'centered' == $header_layout ){
+		$return = 'footer-stacked';
+	}
+	
+	return $return;
+}

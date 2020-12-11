@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $site_name = get_bloginfo( 'name' );
 $tagline   = get_bloginfo( 'description', 'display' );
 ?>
-<footer id="site-footer" class="site-footer" role="contentinfo">
+<footer id="site-footer" class="site-footer <?php echo esc_attr( hello_get_footer_layout_class() ); ?>" role="contentinfo">
 	<div class="site-branding">
 		<?php
 		if ( has_custom_logo() ) {
