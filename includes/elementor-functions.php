@@ -18,24 +18,33 @@ add_action(
 			'header_section',
 			[
 				'tab' => 'settings-layout',
-				'label' => __( 'Header', 'plugin-name' ),
+				'label' => __( 'Header', 'hello-elementor' ),
 			]
 		);
 		
 		$element->add_control(
-			'site_logo_setting',
+			'header_logo_display',
 			[
 				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label' => __( 'Site Logo', 'plugin-name' ),
+				'label' => __( 'Site Logo', 'hello-elementor' ),
 				'default'=> 'yes',
 			]
 		);
 		
 		$element->add_control(
-			'tagline',
+			'header_menu_display',
 			[
 				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label' => __( 'Tagline', 'plugin-name' ),
+				'label' => __( 'Menu', 'hello-elementor' ),
+				'default'=> 'yes',
+			]
+		);
+		
+		$element->add_control(
+			'header_tagline_display',
+			[
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label' => __( 'Tagline', 'hello-elementor' ),
 				'default'=> 'yes',
 			]
 		);
@@ -44,7 +53,7 @@ add_action(
 			'header_layout',
 			[
 				'type' => \Elementor\Controls_Manager::SELECT,
-				'label' => __( 'Layout', 'plugin-name' ),
+				'label' => __( 'Layout', 'hello-elementor' ),
 				'options' => [
 					'default' => 'Default',
 					'invert' => 'Invert',
@@ -53,25 +62,261 @@ add_action(
 				'default'=> 'default',
 			]
 		);
+
+		$element->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'header_background',
+				'label' => __( 'Background', 'plugin-domain' ),
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '.site-header',
+			]
+		);
 		
 		$element->end_controls_section();
 		
 		$element->start_controls_section(
-			'site_logo_section',
+			'header_logo_section',
 			[
 				'tab' => 'settings-layout',
-				'label' => __( 'Site Logo', 'plugin-name' ),
-				'condition'   => [
-                    'site_logo_setting' => 'yes',
-                ],
+				'label' => __( 'Header Branding', 'hello-elementor' ),
 			]
 		);
 		
 		$element->add_control(
-			'site_logo_width',
+			'header_logo_width',
 			[
 				'type' => \Elementor\Controls_Manager::SLIDER,
-				'label' => __( 'Logo Width', 'plugin-name' ),
+				'label' => __( 'Logo Width', 'hello-elementor' ),
+				'condition'   => [
+                    'header_logo_display' => 'yes',
+                ],
+			]
+		);
+
+		$element->add_control(
+			'header_logo_color',
+			[
+				'label' => __( 'Title Color', 'hello-elementor' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'dynamic' => [],
+				'condition'   => [
+                    'header_logo_display' => 'yes',
+                ],
+				'selectors' => [
+					'.site-header h1.site-title a' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$element->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'header_title_typography',
+				'label' => __( 'Title Typography', 'hello-elementor' ),
+				'condition'   => [
+                    'header_logo_display' => 'yes',
+                ],
+				'selector' => '.site-header h1.site-title',
+			]
+		);
+
+		$element->add_control(
+			'header_tagline_color',
+			[
+				'label' => __( 'Tagline Color', 'hello-elementor' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'dynamic' => [],
+				'condition'   => [
+                    'header_tagline_display' => 'yes',
+                ],
+				'selectors' => [
+					'.site-header .site-description' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$element->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'header_tagline_typography',
+				'label' => __( 'Tagline Typography', 'hello-elementor' ),
+				'condition'   => [
+                    'header_tagline_display' => 'yes',
+                ],
+				'selector' => '.site-header .site-description',
+			]
+		);
+		
+		$element->end_controls_section();
+
+
+		
+		$element->start_controls_section(
+			'footer_section',
+			[
+				'tab' => 'settings-layout',
+				'label' => __( 'Footer', 'hello-elementor' ),
+			]
+		);
+		
+		$element->add_control(
+			'footer_logo_display',
+			[
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label' => __( 'Site Logo', 'hello-elementor' ),
+				'default'=> 'yes',
+			]
+		);		
+		
+		$element->add_control(
+			'footer_menu_display',
+			[
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label' => __( 'Menu', 'hello-elementor' ),
+				'default'=> 'yes',
+			]
+		);
+
+		$element->add_control(
+			'footer_tagline_display',
+			[
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label' => __( 'Tagline', 'hello-elementor' ),
+				'default'=> 'yes',
+			]
+		);
+		
+		$element->add_control(
+			'footer_copyright_display',
+			[
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label' => __( 'Copyright', 'hello-elementor' ),
+				'default'=> 'yes',
+			]
+		);
+		
+		$element->add_control(
+			'footer_layout',
+			[
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'label' => __( 'Layout', 'hello-elementor' ),
+				'options' => [
+					'default' => 'Default',
+					'invert' => 'Invert',
+					'centered' => 'Centered',
+				],
+				'default'=> 'default',
+			]
+		);
+
+		$element->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'footer_background',
+				'label' => __( 'Background', 'plugin-domain' ),
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '.site-footer',
+			]
+		);
+		
+		
+		$element->end_controls_section();
+		
+		$element->start_controls_section(
+			'footer_logo_section',
+			[
+				'tab' => 'settings-layout',
+				'label' => __( 'Footer Branding', 'hello-elementor' ),
+			]
+		);
+		
+		$element->add_control(
+			'footer_logo_width',
+			[
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'label' => __( 'Logo Width', 'hello-elementor' ),
+				'condition'   => [
+                    'footer_logo_display' => 'yes',
+                ],
+			]
+		);
+
+		$element->add_control(
+			'footer_logo_color',
+			[
+				'label' => __( 'Title Color', 'hello-elementor' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'condition'   => [
+                    'footer_logo_display' => 'yes',
+                ],
+				'selectors' => [
+					'.site-footer h4.site-title a' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$element->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'footer_title_typography',
+				'label' => __( 'Title Typography', 'hello-elementor'),
+				'condition'   => [
+                    'footer_logo_display' => 'yes',
+                ],
+				'selector' => '.site-footer  h4.site-title',
+			]
+		);
+
+		$element->add_control(
+			'footer_tagline_color',
+			[
+				'label' => __( 'Tagline Color', 'hello-elementor' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'condition'   => [
+                    'footer_tagline_display' => 'yes',
+                ],
+				'selectors' => [
+					'.site-footer .site-description' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$element->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'footer_tagline_typography',
+				'label' => __( 'Tagline Typography', 'hello-elementor' ),
+				'condition'   => [
+                    'footer_tagline_display' => 'yes',
+                ],
+				'selector' => '.site-footer .site-description',
+			]
+		);
+
+		$element->add_control(
+			'footer_copyright_color',
+			[
+				'label' => __( 'Copyright Color', 'hello-elementor' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'condition'   => [
+                    'footer_copyright_display' => 'yes',
+                ],
+				'selectors' => [
+					'.site-footer .copyright p' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$element->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'footer_copyright_typography',
+				'label' => __( 'Copyright Typography', 'hello-elementor' ),
+				'condition'   => [
+                    'footer_copyright_display' => 'yes',
+                ],
+				'selector' => '.site-footer .copyright p',
 			]
 		);
 		
@@ -80,7 +325,7 @@ add_action(
 	10,
 	2
 );
-
+	
 /**
  * Helper function to return a setting.
  *
@@ -92,8 +337,6 @@ add_action(
 function hello_elementor_get_setting( $setting_id ){
 	
 	global $hello_elementor_settings;
-	
-	if ( ! is_array( $hello_elementor_settings ) ) $hello_elementor_settings = [];
 	
 	if ( ! isset( $hello_elementor_settings['active_kit'] ) ){
 		
@@ -108,7 +351,7 @@ function hello_elementor_get_setting( $setting_id ){
 		$return = $hello_elementor_settings['kit_settings'][$setting_id];
 	}
 	
-	return $return;
+	return apply_filters( 'hello_elementor_' . $setting_id, $return );
 }
 
 /**
