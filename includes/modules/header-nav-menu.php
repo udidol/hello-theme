@@ -185,51 +185,8 @@ $element->add_control(
 	]
 );
 
-$element->add_control(
-	'header_menu_toggle_align',
-	[
-		'label' => __( 'Toggle Align', 'hello-elementor' ),
-		'type' => \Elementor\Controls_Manager::CHOOSE,
-		'default' => 'center',
-		'options' => [
-			'left' => [
-				'title' => __( 'Left', 'hello-elementor' ),
-				'icon' => 'eicon-h-align-left',
-			],
-			'center' => [
-				'title' => __( 'Center', 'hello-elementor' ),
-				'icon' => 'eicon-h-align-center',
-			],
-			'right' => [
-				'title' => __( 'Right', 'hello-elementor' ),
-				'icon' => 'eicon-h-align-right',
-			],
-		],
-		'selectors_dictionary' => [
-			'left' => 'margin-right: auto',
-			'center' => 'margin: 0 auto',
-			'right' => 'margin-left: auto',
-		],
-		'selectors' => [
-			'{{WRAPPER}} .elementor-menu-toggle' => '{{VALUE}}',
-		],
-		'condition' => [
-			'header_menu_toggle!' => '',
-			'header_menu_mobile_dropdown!' => 'none',
-		],
-	]
-);
-
 
 $element->end_controls_tab();
-
-/* This control is required to handle with complicated conditions */
-$element->add_control(
-	'hr',
-	[
-		'type' => \Elementor\Controls_Manager::DIVIDER,
-	]
-);
 
 $element->add_control(
 	'header_menu_mobile_submenu_heading',
