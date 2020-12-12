@@ -43,7 +43,7 @@ if ( ! empty( $menus ) ) {
 	);
 } else {
 	$element->add_control(
-		'menu',
+		'header_menu',
 		[
 			'type' => \Elementor\Controls_Manager::RAW_HTML,
 			'raw' => '<strong>' . __( 'There are no menus in your site.', 'hello-elementor' ) . '</strong><br>' . sprintf( __( 'Go to the <a href="%s" target="_blank">Menus screen</a> to create one.', 'hello-elementor' ), admin_url( 'nav-menus.php?action=edit&menu=0' ) ),
@@ -54,14 +54,13 @@ if ( ! empty( $menus ) ) {
 }
 
 $element->add_control(
-	'layout',
+	'header_menu_layout',
 	[
 		'label' => __( 'Layout', 'hello-elementor' ),
 		'type' => \Elementor\Controls_Manager::SELECT,
 		'default' => 'horizontal',
 		'options' => [
 			'horizontal' => __( 'Horizontal', 'hello-elementor' ),
-			'vertical' => __( 'Vertical', 'hello-elementor' ),
 			'dropdown' => __( 'Dropdown', 'hello-elementor' ),
 		],
 		'frontend_available' => true,
@@ -69,37 +68,33 @@ $element->add_control(
 );
 
 $element->add_control(
-	'align_items',
+	'header_menu_color',
 	[
-		'label' => __( 'Align', 'hello-elementor' ),
-		'type' => \Elementor\Controls_Manager::CHOOSE,
-		'options' => [
-			'left' => [
-				'title' => __( 'Left', 'hello-elementor' ),
-				'icon' => 'eicon-h-align-left',
-			],
-			'center' => [
-				'title' => __( 'Center', 'hello-elementor' ),
-				'icon' => 'eicon-h-align-center',
-			],
-			'right' => [
-				'title' => __( 'Right', 'hello-elementor' ),
-				'icon' => 'eicon-h-align-right',
-			],
-			'justify' => [
-				'title' => __( 'Stretch', 'hello-elementor' ),
-				'icon' => 'eicon-h-align-stretch',
-			],
-		],
-		'prefix_class' => 'elementor-nav-menu__align-',
-		'condition' => [
-			'layout!' => 'dropdown',
+		'label' => __( 'Color', 'hello-elementor' ),
+		'type' => \Elementor\Controls_Manager::COLOR,
+		'condition'   => [
+            'footer_copyright_display' => 'yes',
+        ],
+		'selectors' => [
+			'.site-footer .copyright p' => 'color: {{VALUE}};',
 		],
 	]
 );
 
+$element->add_group_control(
+	\Elementor\Group_Control_Typography::get_type(),
+	[
+		'name' => 'header_menu_typography',
+		'label' => __( 'Typography', 'hello-elementor' ),
+		'condition'   => [
+            'footer_copyright_display' => 'yes',
+        ],
+		'selector' => '.site-footer .copyright p',
+	]
+);
+
 $element->add_control(
-	'pointer',
+	'header_menu_pointer',
 	[
 		'label' => __( 'Pointer', 'hello-elementor' ),
 		'type' => \Elementor\Controls_Manager::SELECT,
@@ -115,104 +110,13 @@ $element->add_control(
 		],
 		'style_transfer' => true,
 		'condition' => [
-			'layout!' => 'dropdown',
+			'header_menu_layout!' => 'dropdown',
 		],
 	]
 );
 
 $element->add_control(
-	'animation_line',
-	[
-		'label' => __( 'Animation', 'hello-elementor' ),
-		'type' => \Elementor\Controls_Manager::SELECT,
-		'default' => 'fade',
-		'options' => [
-			'fade' => 'Fade',
-			'slide' => 'Slide',
-			'grow' => 'Grow',
-			'drop-in' => 'Drop In',
-			'drop-out' => 'Drop Out',
-			'none' => 'None',
-		],
-		'condition' => [
-			'layout!' => 'dropdown',
-			'pointer' => [ 'underline', 'overline', 'double-line' ],
-		],
-	]
-);
-
-$element->add_control(
-	'animation_framed',
-	[
-		'label' => __( 'Animation', 'hello-elementor' ),
-		'type' => \Elementor\Controls_Manager::SELECT,
-		'default' => 'fade',
-		'options' => [
-			'fade' => 'Fade',
-			'grow' => 'Grow',
-			'shrink' => 'Shrink',
-			'draw' => 'Draw',
-			'corners' => 'Corners',
-			'none' => 'None',
-		],
-		'condition' => [
-			'layout!' => 'dropdown',
-			'pointer' => 'framed',
-		],
-	]
-);
-
-$element->add_control(
-	'animation_background',
-	[
-		'label' => __( 'Animation', 'hello-elementor' ),
-		'type' => \Elementor\Controls_Manager::SELECT,
-		'default' => 'fade',
-		'options' => [
-			'fade' => 'Fade',
-			'grow' => 'Grow',
-			'shrink' => 'Shrink',
-			'sweep-left' => 'Sweep Left',
-			'sweep-right' => 'Sweep Right',
-			'sweep-up' => 'Sweep Up',
-			'sweep-down' => 'Sweep Down',
-			'shutter-in-vertical' => 'Shutter In Vertical',
-			'shutter-out-vertical' => 'Shutter Out Vertical',
-			'shutter-in-horizontal' => 'Shutter In Horizontal',
-			'shutter-out-horizontal' => 'Shutter Out Horizontal',
-			'none' => 'None',
-		],
-		'condition' => [
-			'layout!' => 'dropdown',
-			'pointer' => 'background',
-		],
-	]
-);
-
-$element->add_control(
-	'animation_text',
-	[
-		'label' => __( 'Animation', 'hello-elementor' ),
-		'type' => \Elementor\Controls_Manager::SELECT,
-		'default' => 'grow',
-		'options' => [
-			'grow' => 'Grow',
-			'shrink' => 'Shrink',
-			'sink' => 'Sink',
-			'float' => 'Float',
-			'skew' => 'Skew',
-			'rotate' => 'Rotate',
-			'none' => 'None',
-		],
-		'condition' => [
-			'layout!' => 'dropdown',
-			'pointer' => 'text',
-		],
-	]
-);
-
-$element->add_control(
-	'indicator',
+	'header_menu_indicator',
 	[
 		'label' => __( 'Submenu Indicator', 'hello-elementor' ),
 		'type' => \Elementor\Controls_Manager::SELECT,
@@ -229,13 +133,13 @@ $element->add_control(
 );
 
 $element->add_control(
-	'heading_mobile_dropdown',
+	'header_menu_mobile_dropdown_heading',
 	[
 		'label' => __( 'Mobile Dropdown', 'hello-elementor' ),
 		'type' => \Elementor\Controls_Manager::HEADING,
 		'separator' => 'before',
 		'condition' => [
-			'layout!' => 'dropdown',
+			'header_menu_layout!' => 'dropdown',
 		],
 	]
 );
@@ -243,7 +147,7 @@ $element->add_control(
 $breakpoints = Responsive::get_breakpoints();
 
 $element->add_control(
-	'dropdown',
+	'header_menu_dropdown',
 	[
 		'label' => __( 'Breakpoint', 'hello-elementor' ),
 		'type' => \Elementor\Controls_Manager::SELECT,
@@ -257,45 +161,13 @@ $element->add_control(
 		],
 		'prefix_class' => 'elementor-nav-menu--dropdown-',
 		'condition' => [
-			'layout!' => 'dropdown',
+			'header_menu_layout!' => 'dropdown',
 		],
 	]
 );
 
 $element->add_control(
-	'full_width',
-	[
-		'label' => __( 'Full Width', 'hello-elementor' ),
-		'type' => \Elementor\Controls_Manager::SWITCHER,
-		'description' => __( 'Stretch the dropdown of the menu to full width.', 'hello-elementor' ),
-		'prefix_class' => 'elementor-nav-menu--',
-		'return_value' => 'stretch',
-		'frontend_available' => true,
-		'condition' => [
-			'dropdown!' => 'none',
-		],
-	]
-);
-
-$element->add_control(
-	'text_align',
-	[
-		'label' => __( 'Align', 'hello-elementor' ),
-		'type' => \Elementor\Controls_Manager::SELECT,
-		'default' => 'aside',
-		'options' => [
-			'aside' => __( 'Aside', 'hello-elementor' ),
-			'center' => __( 'Center', 'hello-elementor' ),
-		],
-		'prefix_class' => 'elementor-nav-menu__text-align-',
-		'condition' => [
-			'dropdown!' => 'none',
-		],
-	]
-);
-
-$element->add_control(
-	'toggle',
+	'header_menu_toggle',
 	[
 		'label' => __( 'Toggle Button', 'hello-elementor' ),
 		'type' => \Elementor\Controls_Manager::SELECT,
@@ -308,13 +180,13 @@ $element->add_control(
 		'render_type' => 'template',
 		'frontend_available' => true,
 		'condition' => [
-			'dropdown!' => 'none',
+			'header_menu_layout' => 'dropdown',
 		],
 	]
 );
 
 $element->add_control(
-	'toggle_align',
+	'header_menu_toggle_align',
 	[
 		'label' => __( 'Toggle Align', 'hello-elementor' ),
 		'type' => \Elementor\Controls_Manager::CHOOSE,
@@ -342,171 +214,14 @@ $element->add_control(
 			'{{WRAPPER}} .elementor-menu-toggle' => '{{VALUE}}',
 		],
 		'condition' => [
-			'toggle!' => '',
-			'dropdown!' => 'none',
+			'header_menu_toggle!' => '',
+			'header_menu_mobile_dropdown!' => 'none',
 		],
 	]
 );
 
-$element->end_controls_section();
-
-$element->start_controls_section(
-	'section_style_main-menu',
-	[
-		'label' => __( 'Main Menu', 'hello-elementor' ),
-		'tab' => \Elementor\Controls_Manager::TAB_STYLE,
-		'condition' => [
-			'layout!' => 'dropdown',
-		],
-
-	]
-);
-
-$element->add_group_control(
-	\Elementor\Group_Control_Typography::get_type(),
-	[
-		'name' => 'menu_typography',
-		'global' => [
-			'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
-		],
-		'selector' => '{{WRAPPER}} .elementor-nav-menu .elementor-item',
-	]
-);
-
-$element->start_controls_tabs( 'tabs_menu_item_style' );
-
-$element->start_controls_tab(
-	'tab_menu_item_normal',
-	[
-		'label' => __( 'Normal', 'hello-elementor' ),
-	]
-);
-
-$element->add_control(
-	'color_menu_item',
-	[
-		'label' => __( 'Text Color', 'hello-elementor' ),
-		'type' => \Elementor\Controls_Manager::COLOR,
-		'global' => [
-			'default' => Global_Colors::COLOR_TEXT,
-		],
-		'default' => '',
-		'selectors' => [
-			'{{WRAPPER}} .elementor-nav-menu--main .elementor-item' => 'color: {{VALUE}}',
-		],
-	]
-);
 
 $element->end_controls_tab();
-
-$element->start_controls_tab(
-	'tab_menu_item_hover',
-	[
-		'label' => __( 'Hover', 'hello-elementor' ),
-	]
-);
-
-$element->add_control(
-	'color_menu_item_hover',
-	[
-		'label' => __( 'Text Color', 'hello-elementor' ),
-		'type' => \Elementor\Controls_Manager::COLOR,
-		'global' => [
-			'default' => Global_Colors::COLOR_ACCENT,
-		],
-		'selectors' => [
-			'{{WRAPPER}} .elementor-nav-menu--main .elementor-item:hover,
-			{{WRAPPER}} .elementor-nav-menu--main .elementor-item.elementor-item-active,
-			{{WRAPPER}} .elementor-nav-menu--main .elementor-item.highlighted,
-			{{WRAPPER}} .elementor-nav-menu--main .elementor-item:focus' => 'color: {{VALUE}}',
-		],
-		'condition' => [
-			'pointer!' => 'background',
-		],
-	]
-);
-
-$element->add_control(
-	'color_menu_item_hover_pointer_bg',
-	[
-		'label' => __( 'Text Color', 'hello-elementor' ),
-		'type' => \Elementor\Controls_Manager::COLOR,
-		'default' => '#fff',
-		'selectors' => [
-			'{{WRAPPER}} .elementor-nav-menu--main .elementor-item:hover,
-			{{WRAPPER}} .elementor-nav-menu--main .elementor-item.elementor-item-active,
-			{{WRAPPER}} .elementor-nav-menu--main .elementor-item.highlighted,
-			{{WRAPPER}} .elementor-nav-menu--main .elementor-item:focus' => 'color: {{VALUE}}',
-		],
-		'condition' => [
-			'pointer' => 'background',
-		],
-	]
-);
-
-$element->add_control(
-	'pointer_color_menu_item_hover',
-	[
-		'label' => __( 'Pointer Color', 'hello-elementor' ),
-		'type' => \Elementor\Controls_Manager::COLOR,
-		'global' => [
-			'default' => Global_Colors::COLOR_ACCENT,
-		],
-		'default' => '',
-		'selectors' => [
-			'{{WRAPPER}} .elementor-nav-menu--main:not(.e--pointer-framed) .elementor-item:before,
-			{{WRAPPER}} .elementor-nav-menu--main:not(.e--pointer-framed) .elementor-item:after' => 'background-color: {{VALUE}}',
-			'{{WRAPPER}} .e--pointer-framed .elementor-item:before,
-			{{WRAPPER}} .e--pointer-framed .elementor-item:after' => 'border-color: {{VALUE}}',
-		],
-		'condition' => [
-			'pointer!' => [ 'none', 'text' ],
-		],
-	]
-);
-
-$element->end_controls_tab();
-
-$element->start_controls_tab(
-	'tab_menu_item_active',
-	[
-		'label' => __( 'Active', 'hello-elementor' ),
-	]
-);
-
-$element->add_control(
-	'color_menu_item_active',
-	[
-		'label' => __( 'Text Color', 'hello-elementor' ),
-		'type' => \Elementor\Controls_Manager::COLOR,
-		'default' => '',
-		'selectors' => [
-			'{{WRAPPER}} .elementor-nav-menu--main .elementor-item.elementor-item-active' => 'color: {{VALUE}}',
-		],
-	]
-);
-
-$element->add_control(
-	'pointer_color_menu_item_active',
-	[
-		'label' => __( 'Pointer Color', 'hello-elementor' ),
-		'type' => \Elementor\Controls_Manager::COLOR,
-		'default' => '',
-		'selectors' => [
-			'{{WRAPPER}} .elementor-nav-menu--main:not(.e--pointer-framed) .elementor-item.elementor-item-active:before,
-			{{WRAPPER}} .elementor-nav-menu--main:not(.e--pointer-framed) .elementor-item.elementor-item-active:after' => 'background-color: {{VALUE}}',
-			'{{WRAPPER}} .e--pointer-framed .elementor-item.elementor-item-active:before,
-			{{WRAPPER}} .e--pointer-framed .elementor-item.elementor-item-active:after' => 'border-color: {{VALUE}}',
-		],
-		'condition' => [
-			'pointer!' => [ 'none', 'text' ],
-		],
-	]
-);
-
-$element->end_controls_tab();
-
-$element->end_controls_tabs();
 
 /* This control is required to handle with complicated conditions */
 $element->add_control(
@@ -516,111 +231,18 @@ $element->add_control(
 	]
 );
 
-$element->add_responsive_control(
-	'pointer_width',
+$element->add_control(
+	'header_menu_mobile_submenu_heading',
 	[
-		'label' => __( 'Pointer Width', 'hello-elementor' ),
-		'type' => \Elementor\Controls_Manager::SLIDER,
-		'range' => [
-			'px' => [
-				'max' => 30,
-			],
-		],
-		'selectors' => [
-			'{{WRAPPER}} .e--pointer-framed .elementor-item:before' => 'border-width: {{SIZE}}{{UNIT}}',
-			'{{WRAPPER}} .e--pointer-framed.e--animation-draw .elementor-item:before' => 'border-width: 0 0 {{SIZE}}{{UNIT}} {{SIZE}}{{UNIT}}',
-			'{{WRAPPER}} .e--pointer-framed.e--animation-draw .elementor-item:after' => 'border-width: {{SIZE}}{{UNIT}} {{SIZE}}{{UNIT}} 0 0',
-			'{{WRAPPER}} .e--pointer-framed.e--animation-corners .elementor-item:before' => 'border-width: {{SIZE}}{{UNIT}} 0 0 {{SIZE}}{{UNIT}}',
-			'{{WRAPPER}} .e--pointer-framed.e--animation-corners .elementor-item:after' => 'border-width: 0 {{SIZE}}{{UNIT}} {{SIZE}}{{UNIT}} 0',
-			'{{WRAPPER}} .e--pointer-underline .elementor-item:after,
-			 {{WRAPPER}} .e--pointer-overline .elementor-item:before,
-			 {{WRAPPER}} .e--pointer-double-line .elementor-item:before,
-			 {{WRAPPER}} .e--pointer-double-line .elementor-item:after' => 'height: {{SIZE}}{{UNIT}}',
-		],
+		'label' => __( 'Sub-Menu Settings', 'hello-elementor' ),
+		'type' => \Elementor\Controls_Manager::HEADING,
+		'separator' => 'before',
 		'condition' => [
-			'pointer' => [ 'underline', 'overline', 'double-line', 'framed' ],
+			'header_menu_layout!' => 'dropdown',
 		],
 	]
 );
 
-$element->add_responsive_control(
-	'padding_horizontal_menu_item',
-	[
-		'label' => __( 'Horizontal Padding', 'hello-elementor' ),
-		'type' => \Elementor\Controls_Manager::SLIDER,
-		'range' => [
-			'px' => [
-				'max' => 50,
-			],
-		],
-		'selectors' => [
-			'{{WRAPPER}} .elementor-nav-menu--main .elementor-item' => 'padding-left: {{SIZE}}{{UNIT}}; padding-right: {{SIZE}}{{UNIT}}',
-		],
-	]
-);
-
-$element->add_responsive_control(
-	'padding_vertical_menu_item',
-	[
-		'label' => __( 'Vertical Padding', 'hello-elementor' ),
-		'type' => \Elementor\Controls_Manager::SLIDER,
-		'range' => [
-			'px' => [
-				'max' => 50,
-			],
-		],
-		'selectors' => [
-			'{{WRAPPER}} .elementor-nav-menu--main .elementor-item' => 'padding-top: {{SIZE}}{{UNIT}}; padding-bottom: {{SIZE}}{{UNIT}}',
-		],
-	]
-);
-
-$element->add_responsive_control(
-	'menu_space_between',
-	[
-		'label' => __( 'Space Between', 'hello-elementor' ),
-		'type' => \Elementor\Controls_Manager::SLIDER,
-		'range' => [
-			'px' => [
-				'max' => 100,
-			],
-		],
-		'selectors' => [
-			'body:not(.rtl) {{WRAPPER}} .elementor-nav-menu--layout-horizontal .elementor-nav-menu > li:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}}',
-			'body.rtl {{WRAPPER}} .elementor-nav-menu--layout-horizontal .elementor-nav-menu > li:not(:last-child)' => 'margin-left: {{SIZE}}{{UNIT}}',
-			'{{WRAPPER}} .elementor-nav-menu--main:not(.elementor-nav-menu--layout-horizontal) .elementor-nav-menu > li:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}}',
-		],
-	]
-);
-
-$element->add_responsive_control(
-	'border_radius_menu_item',
-	[
-		'label' => __( 'Border Radius', 'hello-elementor' ),
-		'type' => \Elementor\Controls_Manager::SLIDER,
-		'size_units' => [ 'px', 'em', '%' ],
-		'selectors' => [
-			'{{WRAPPER}} .elementor-item:before' => 'border-radius: {{SIZE}}{{UNIT}}',
-			'{{WRAPPER}} .e--animation-shutter-in-horizontal .elementor-item:before' => 'border-radius: {{SIZE}}{{UNIT}} {{SIZE}}{{UNIT}} 0 0',
-			'{{WRAPPER}} .e--animation-shutter-in-horizontal .elementor-item:after' => 'border-radius: 0 0 {{SIZE}}{{UNIT}} {{SIZE}}{{UNIT}}',
-			'{{WRAPPER}} .e--animation-shutter-in-vertical .elementor-item:before' => 'border-radius: 0 {{SIZE}}{{UNIT}} {{SIZE}}{{UNIT}} 0',
-			'{{WRAPPER}} .e--animation-shutter-in-vertical .elementor-item:after' => 'border-radius: {{SIZE}}{{UNIT}} 0 0 {{SIZE}}{{UNIT}}',
-		],
-		'condition' => [
-			'pointer' => 'background',
-		],
-	]
-);
-
-$element->end_controls_section();
-
-$element->start_controls_section(
-	'section_style_dropdown',
-	[
-		'label' => __( 'Dropdown', 'hello-elementor' ),
-		'tab' => \Elementor\Controls_Manager::TAB_STYLE,
-	]
-);
 
 $element->add_control(
 	'dropdown_description',
@@ -789,90 +411,6 @@ $element->add_group_control(
 	]
 );
 
-$element->add_responsive_control(
-	'padding_horizontal_dropdown_item',
-	[
-		'label' => __( 'Horizontal Padding', 'hello-elementor' ),
-		'type' => \Elementor\Controls_Manager::SLIDER,
-		'selectors' => [
-			'{{WRAPPER}} .elementor-nav-menu--dropdown a' => 'padding-left: {{SIZE}}{{UNIT}}; padding-right: {{SIZE}}{{UNIT}}',
-		],
-		'separator' => 'before',
-
-	]
-);
-
-$element->add_responsive_control(
-	'padding_vertical_dropdown_item',
-	[
-		'label' => __( 'Vertical Padding', 'hello-elementor' ),
-		'type' => \Elementor\Controls_Manager::SLIDER,
-		'range' => [
-			'px' => [
-				'max' => 50,
-			],
-		],
-		'selectors' => [
-			'{{WRAPPER}} .elementor-nav-menu--dropdown a' => 'padding-top: {{SIZE}}{{UNIT}}; padding-bottom: {{SIZE}}{{UNIT}}',
-		],
-	]
-);
-
-$element->add_control(
-	'heading_dropdown_divider',
-	[
-		'label' => __( 'Divider', 'hello-elementor' ),
-		'type' => \Elementor\Controls_Manager::HEADING,
-		'separator' => 'before',
-	]
-);
-
-$element->add_group_control(
-	Group_Control_Border::get_type(),
-	[
-		'name' => 'dropdown_divider',
-		'selector' => '{{WRAPPER}} .elementor-nav-menu--dropdown li:not(:last-child)',
-		'exclude' => [ 'width' ],
-	]
-);
-
-$element->add_control(
-	'dropdown_divider_width',
-	[
-		'label' => __( 'Border Width', 'hello-elementor' ),
-		'type' => \Elementor\Controls_Manager::SLIDER,
-		'range' => [
-			'px' => [
-				'max' => 50,
-			],
-		],
-		'selectors' => [
-			'{{WRAPPER}} .elementor-nav-menu--dropdown li:not(:last-child)' => 'border-bottom-width: {{SIZE}}{{UNIT}}',
-		],
-		'condition' => [
-			'dropdown_divider_border!' => '',
-		],
-	]
-);
-
-$element->add_responsive_control(
-	'dropdown_top_distance',
-	[
-		'label' => __( 'Distance', 'hello-elementor' ),
-		'type' => \Elementor\Controls_Manager::SLIDER,
-		'range' => [
-			'px' => [
-				'min' => -100,
-				'max' => 100,
-			],
-		],
-		'selectors' => [
-			'{{WRAPPER}} .elementor-nav-menu--main > .elementor-nav-menu > li > .elementor-nav-menu--dropdown, {{WRAPPER}} .elementor-nav-menu__container.elementor-nav-menu--dropdown' => 'margin-top: {{SIZE}}{{UNIT}} !important',
-		],
-		'separator' => 'before',
-	]
-);
-
 $element->end_controls_section();
 
 $element->start_controls_section( 'style_toggle',
@@ -880,8 +418,8 @@ $element->start_controls_section( 'style_toggle',
 		'label' => __( 'Toggle Button', 'hello-elementor' ),
 		'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 		'condition' => [
-			'toggle!' => '',
-			'dropdown!' => 'none',
+			'header_menu_toggle!' => '',
+			'header_menu_mobile_dropdown!' => 'none',
 		],
 	]
 );
