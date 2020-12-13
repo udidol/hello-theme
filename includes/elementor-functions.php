@@ -69,10 +69,10 @@ function hello_get_header_layout_class(){
 	
 	$return = '';
 	
-	if ( 'invert' == $header_layout ){
+	if ( 'inverted' == $header_layout ){
 		$return = 'header-inverted';
 	}
-	elseif ( 'centered' == $header_layout ){
+	elseif ( 'stacked' == $header_layout ){
 		$return = 'header-stacked';
 	}
 	
@@ -90,7 +90,7 @@ function hello_get_footer_layout_class(){
 	
 	$return = '';
 	
-	if ( 'invert' == $header_layout ){
+	if ( 'inverted' == $header_layout ){
 		$return = 'footer-inverted';
 	}
 	elseif ( 'centered' == $header_layout ){

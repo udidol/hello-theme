@@ -9,6 +9,21 @@ $element->start_controls_section(
 	[
 		'tab' => 'settings-layout',
 		'label' => __( 'Footer Branding', 'hello-elementor' ),
+		'conditions' => [
+	        'relation' => 'or',
+			'terms' => [
+				[
+					'name' => 'footer_logo_display',
+					'operator' => '=',
+					'value' => 'yes',
+				],
+				[
+					'name' => 'footer_tagline_display',
+					'operator' => '=',
+					'value' => 'yes',
+				],
+			],
+	    ]
 	]
 );
 

@@ -46,9 +46,11 @@ $element->add_control(
 		'label' => __( 'Layout', 'hello-elementor' ),
 		'options' => [
 			'default' => 'Default',
-			'invert' => 'Invert',
-			'centered' => 'Centered',
+			'inverted' => 'Invert',
+			'stacked' => 'Centered',
 		],
+		'prefix_class' => 'header-',
+		'selector' => '.site-header',
 		'default'=> 'default',
 	]
 );
