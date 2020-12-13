@@ -46,7 +46,10 @@ $tagline   = get_bloginfo( 'description', 'display' );
 		</nav>
 	<?php endif; ?>
 
-	<div class="copyright">
-		<p><?php echo hello_elementor_get_setting( 'footer_copyright_text' ); ?></p>
-	</div>
+	<?php if ( '' !== hello_elementor_get_setting( 'footer_copyright_text' ) && 'yes' == hello_elementor_get_setting( 'footer_copyright_display' ) ) :
+		?>
+		<div class="copyright">
+			<p><?php echo hello_elementor_get_setting( 'footer_copyright_text' ); ?></p>
+		</div>
+	<?php endif; ?>
 </footer>

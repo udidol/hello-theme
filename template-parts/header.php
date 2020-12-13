@@ -20,7 +20,7 @@ $tagline   = get_bloginfo( 'description', 'display' );
 			if ( has_custom_logo() ) {
 				the_custom_logo();
 			} elseif ( $site_name  && 'yes' == hello_elementor_get_setting( 'header_tagline_display' ) ) {
-				?>
+			?>
 				<h1 class="site-title">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php esc_attr_e( 'Home', 'hello-elementor' ); ?>" rel="home">
 						<?php echo esc_html( $site_name ); ?>
