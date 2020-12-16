@@ -6,25 +6,33 @@
  */
 
 use Elementor\Plugin;
+use Elementor\Core\Kits\Documents\Tabs;
 
 /**
  * Register Site Settings Controls.
  */
+
+require 'controls/settings-header.php';
+require 'controls/settings-footer.php';
+
 add_action(
 	'elementor/element/kit/section_settings-layout/before_section_start',
-	function( $element, $args ) {
+	function( $kit, $args ) {
 		
-		// We need a better way to do this than using an include, but for now this is what we're doing 
-
-		/* Header Controls */			
-		require 'modules/header-general.php';
-		require 'modules/header-branding.php';
-		require 'modules/header-nav-menu.php';
-
-		/* Footer Controls */		
-		require 'modules/footer-general.php';
-		require 'modules/footer-branding.php';
-		require 'modules/footer-copyright.php';
+		// TODO: waiting for a way to register new tabs in Elementor.
+		// This method goes as far as registering the new tab so is
+		// ready for Elementor to render the tab. Not sure if this is
+		// intended that we go as far as extending the Elementor\Core\Kits\Documents\Tabs
+		// or if we should extend a new local Hello_Elementor\Tabs class.
+		
+		$tabs = [
+			'settings-header' => new Tabs\Settings_Header( $kit ),
+			'settings-footer' => new Tabs\Settings_Footer( $kit ),
+		];
+		
+		foreach ( $tabs as $tab ) {
+			$tab->register_controls();
+		}
 	},
 	10,
 	2
