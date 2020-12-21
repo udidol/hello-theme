@@ -3,7 +3,7 @@
 namespace Elementor\Core\Kits\Documents\Tabs;
 
 use Elementor\Plugin;
-use Elementor\Core\Kits\Documents\Tabs;
+use Elementor\Core\Kits\Documents\Tabs\Tab_Base;
 use Elementor\Controls_Manager;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Core\Responsive\Responsive;
@@ -13,14 +13,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 	
-class Settings_Footer extends Tab_Base {
+class Hello_Settings_Footer extends Tab_Base {
 
 	public function get_id() {
-		return 'settings-footer';
+		return 'hello-settings-footer';
 	}
 
 	public function get_title() {
 		return __( 'Footer', 'hello-elementor' );
+	}
+
+	public function get_icon() {
+		return 'eicon-footer';
 	}
 
 	protected function register_tab_controls() {
@@ -28,7 +32,7 @@ class Settings_Footer extends Tab_Base {
 		$this->start_controls_section(
 			'footer_section',
 			[
-				'tab' => 'settings-layout',
+				'tab' => 'hello-settings-footer',
 				'label' => __( 'Footer', 'hello-elementor' ),
 			]
 		);
@@ -38,6 +42,15 @@ class Settings_Footer extends Tab_Base {
 			[
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label' => __( 'Site Logo', 'hello-elementor' ),
+				'default'=> 'yes',
+			]
+		);
+
+		$this->add_control(
+			'footer_tagline_display',
+			[
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label' => __( 'Tagline', 'hello-elementor' ),
 				'default'=> 'yes',
 			]
 		);
@@ -66,9 +79,9 @@ class Settings_Footer extends Tab_Base {
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'label' => __( 'Layout', 'hello-elementor' ),
 				'options' => [
-					'default' => 'Default',
-					'inverted' => 'Invert',
-					'stacked' => 'Centered',
+					'default' => __( 'Default', 'hello-elementor' ),
+					'inverted' => __( 'Invert', 'hello-elementor' ),
+					'stacked' => __( 'Centered', 'hello-elementor' ),
 				],
 				'prefix_class' => 'footer-',
 				'selector' => '.site-footer',
@@ -92,8 +105,8 @@ class Settings_Footer extends Tab_Base {
 		$this->start_controls_section(
 			'footer_logo_section',
 			[
-				'tab' => 'settings-layout',
-				'label' => __( 'Footer Branding', 'hello-elementor' ),
+				'tab' => 'hello-settings-footer',
+				'label' => __( 'Logo', 'hello-elementor' ),
 				'conditions' => [
 			        'relation' => 'or',
 					'terms' => [
@@ -128,24 +141,40 @@ class Settings_Footer extends Tab_Base {
 			[
 				'label' => __( 'Title Color', 'hello-elementor' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
+				'dynamic' => [],
 				'condition'   => [
-		            'footer_logo_display' => 'yes',
-		        ],
+					'footer_logo_display' => 'yes',
+				],
 				'selectors' => [
 					'.site-footer h4.site-title a' => 'color: {{VALUE}};',
 				],
 			]
 		);
 
-		$this->add_responsive_control(
+		$this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'footer_title_typography',
-				'label' => __( 'Title Typography', 'hello-elementor'),
+				'label' => __( 'Title Typography', 'hello-elementor' ),
 				'condition'   => [
-		            'footer_logo_display' => 'yes',
+					'footer_logo_display' => 'yes',
+				],
+				'selector' => '.site-footer h4.site-title',
+
+			]
+		);
+
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'footer_tagline',
+			[
+				'tab' => 'hello-settings-footer',
+				'label' => __( 'Tagline', 'hello-elementor' ),
+				'condition'   => [
+		            'footer_tagline_display' => 'yes',
 		        ],
-				'selector' => '.site-footer  h4.site-title',
 			]
 		);
 
@@ -154,9 +183,10 @@ class Settings_Footer extends Tab_Base {
 			[
 				'label' => __( 'Tagline Color', 'hello-elementor' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
+				'dynamic' => [],
 				'condition'   => [
-		            'footer_tagline_display' => 'yes',
-		        ],
+					'footer_tagline_display' => 'yes',
+				],
 				'selectors' => [
 					'.site-footer .site-description' => 'color: {{VALUE}};',
 				],
@@ -169,8 +199,8 @@ class Settings_Footer extends Tab_Base {
 				'name' => 'footer_tagline_typography',
 				'label' => __( 'Tagline Typography', 'hello-elementor' ),
 				'condition'   => [
-		            'footer_tagline_display' => 'yes',
-		        ],
+					'footer_tagline_display' => 'yes',
+				],
 				'selector' => '.site-footer .site-description',
 			]
 		);
@@ -181,8 +211,8 @@ class Settings_Footer extends Tab_Base {
 		$this->start_controls_section(
 			'footer_menu',
 			[
-				'tab' => 'settings-layout',
-				'label' => __( 'Footer Menu', 'hello-elementor' ),
+				'tab' => 'hello-settings-footer',
+				'label' => __( 'Menu', 'hello-elementor' ),
 				'condition'   => [
 		            'footer_menu_display' => 'yes',
 		        ],
@@ -289,8 +319,8 @@ class Settings_Footer extends Tab_Base {
 		$this->start_controls_section(
 			'footer_copyright_section',
 			[
-				'tab' => 'settings-layout',
-				'label' => __( 'Footer Copyright', 'hello-elementor' ),
+				'tab' => 'hello-settings-footer',
+				'label' => __( 'Copyright', 'hello-elementor' ),
 				'condition'   => [
 		            'footer_copyright_display' => 'yes',
 		        ],
@@ -335,3 +365,7 @@ class Settings_Footer extends Tab_Base {
 		$this->end_controls_section();
 	}
 }
+
+add_action( 'elementor/kit/register_tabs', function( \Elementor\Core\Kits\Documents\Kit $kit ) {
+	$kit->register_tab( 'hello-settings-footer', Hello_Settings_Footer::class );
+} );

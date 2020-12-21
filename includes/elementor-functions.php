@@ -12,31 +12,13 @@ use Elementor\Core\Kits\Documents\Tabs;
  * Register Site Settings Controls.
  */
 
-require 'controls/settings-header.php';
-require 'controls/settings-footer.php';
+add_action( 'elementor/init', 'hello_elementor_settings_init' );
 
-add_action(
-	'elementor/element/kit/section_settings-layout/before_section_start',
-	function( $kit, $args ) {
-		
-		// TODO: waiting for a way to register new tabs in Elementor.
-		// This method goes as far as registering the new tab so is
-		// ready for Elementor to render the tab. Not sure if this is
-		// intended that we go as far as extending the Elementor\Core\Kits\Documents\Tabs
-		// or if we should extend a new local Hello_Elementor\Tabs class.
-		
-		$tabs = [
-			'settings-header' => new Tabs\Settings_Header( $kit ),
-			'settings-footer' => new Tabs\Settings_Footer( $kit ),
-		];
-		
-		foreach ( $tabs as $tab ) {
-			$tab->register_controls();
-		}
-	},
-	10,
-	2
-);
+function hello_elementor_settings_init(){
+	
+	require 'controls/settings-header.php';
+	require 'controls/settings-footer.php';
+}
 	
 /**
  * Helper function to return a setting.

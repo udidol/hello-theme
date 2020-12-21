@@ -3,7 +3,7 @@
 namespace Elementor\Core\Kits\Documents\Tabs;
 
 use Elementor\Plugin;
-use Elementor\Core\Kits\Documents\Tabs;
+use Elementor\Core\Kits\Documents\Tabs\Tab_Base;
 use Elementor\Controls_Manager;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Core\Responsive\Responsive;
@@ -13,22 +13,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 	
-class Settings_Header extends Tab_Base {
+
+
+class Hello_Settings_Header extends Tab_Base {
 
 	public function get_id() {
-		return 'settings-header';
+		return 'hello-settings-header';
 	}
 
 	public function get_title() {
 		return __( 'Header', 'hello-elementor' );
 	}
 
+	public function get_icon() {
+		return 'eicon-header';
+	}	
+
 	protected function register_tab_controls() {
 		
 		$this->start_controls_section(
 			'header_section',
 			[
-				'tab' => 'settings-layout',
+				'tab' => 'hello-settings-header',
 				'label' => __( 'Header', 'hello-elementor' ),
 			]
 		);
@@ -37,7 +43,7 @@ class Settings_Header extends Tab_Base {
 			'header_logo_display',
 			[
 				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label' => __( 'Site Logo', 'hello-elementor' ),
+				'label' => __( 'Logo', 'hello-elementor' ),
 				'default'=> 'yes',
 			]
 		);
@@ -66,9 +72,9 @@ class Settings_Header extends Tab_Base {
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'label' => __( 'Layout', 'hello-elementor' ),
 				'options' => [
-					'default' => 'Default',
-					'inverted' => 'Invert',
-					'stacked' => 'Centered',
+					'default' => __( 'Default', 'hello-elementor' ),
+					'inverted' => __( 'Invert', 'hello-elementor' ),
+					'stacked' => __( 'Centered', 'hello-elementor' ),
 				],
 				'prefix_class' => 'header-',
 				'selector' => '.site-header',
@@ -92,18 +98,13 @@ class Settings_Header extends Tab_Base {
 		$this->start_controls_section(
 			'header_logo_section',
 			[
-				'tab' => 'settings-layout',
-				'label' => __( 'Header Branding', 'hello-elementor' ),
+				'tab' => 'hello-settings-header',
+				'label' => __( 'Logo', 'hello-elementor' ),
 				'conditions' => [
 					'relation' => 'or',
 					'terms' => [
 						[
 							'name' => 'header_logo_display',
-							'operator' => '=',
-							'value' => 'yes',
-						],
-						[
-							'name' => 'header_tagline_display',
 							'operator' => '=',
 							'value' => 'yes',
 						],
@@ -157,6 +158,19 @@ class Settings_Header extends Tab_Base {
 			]
 		);
 
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'header_tagline',
+			[
+				'tab' => 'hello-settings-header',
+				'label' => __( 'Tagline', 'hello-elementor' ),
+				'condition'   => [
+		            'header_tagline_display' => 'yes',
+		        ],
+			]
+		);
+
 		$this->add_control(
 			'header_tagline_color',
 			[
@@ -188,10 +202,10 @@ class Settings_Header extends Tab_Base {
 		
 
 		$this->start_controls_section(
-			'header_menu',
+			'header_menu_tab',
 			[
-				'tab' => 'settings-layout',
-				'label' => __( 'Header Menu', 'hello-elementor' ),
+				'tab' => 'hello-settings-header',
+				'label' => __( 'Menu', 'hello-elementor' ),
 				'condition'   => [
 		            'header_menu_display' => 'yes',
 		        ],
@@ -218,7 +232,7 @@ class Settings_Header extends Tab_Base {
 		} else {
 			
 			$this->add_control(
-				'menu',
+				'header_menu',
 				[
 					'label' => __( 'Menu', 'hello-elementor' ),
 					'type' => \Elementor\Controls_Manager::SELECT,
@@ -293,39 +307,10 @@ class Settings_Header extends Tab_Base {
 		}
 
 		$this->end_controls_section();
-		
-
-		$this->start_controls_section(
-			'header_tagline',
-			[
-				'tab' => 'settings-layout',
-				'label' => __( 'Header Tagline', 'hello-elementor' ),
-				'condition'   => [
-		            'header_tagline_display' => 'yes',
-		        ],
-			]
-		);
-
-		$this->add_control(
-			'tagline_color',
-			[
-				'label' => __( 'Color', 'hello-elementor' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'.site-footer .copyright p' => 'color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			\Elementor\Group_Control_Typography::get_type(),
-			[
-				'name' => 'tagline_typography',
-				'label' => __( 'Typography', 'hello-elementor' ),
-				'selector' => '.site-footer .copyright p',
-			]
-		);
-
-		$this->end_controls_section();
+				
 	}
 }
+
+add_action( 'elementor/kit/register_tabs', function( \Elementor\Core\Kits\Documents\Kit $kit ) {
+	$kit->register_tab( 'hello-settings-header', Hello_Settings_Header::class );
+}, 1, 40 );

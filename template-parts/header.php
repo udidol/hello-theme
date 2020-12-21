@@ -8,6 +8,8 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+
+$is_editor = ( class_exists('Elementor') && \Elementor\Plugin::$instance->editor->is_edit_mode() );
 $site_name = get_bloginfo( 'name' );
 $tagline   = get_bloginfo( 'description', 'display' );
 ?>
@@ -16,10 +18,10 @@ $tagline   = get_bloginfo( 'description', 'display' );
 
 	<div class="site-branding">
 		<?php
-		if ( 'yes' == hello_elementor_get_setting( 'header_logo_display' ) ) {
+		if ( 'yes' == hello_elementor_get_setting( 'header_logo_display' ) || $is_editor ) {
 			if ( has_custom_logo() ) {
 				the_custom_logo();
-			} elseif ( $site_name  && 'yes' == hello_elementor_get_setting( 'header_tagline_display' ) ) {
+			} elseif ( ( $site_name  && 'yes' == hello_elementor_get_setting( 'header_tagline_display' ) ) || $is_editor  ) {
 			?>
 				<h1 class="site-title">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php esc_attr_e( 'Home', 'hello-elementor' ); ?>" rel="home">
@@ -30,7 +32,7 @@ $tagline   = get_bloginfo( 'description', 'display' );
 			}
 		}
 
-		if ( $tagline && 'yes' == hello_elementor_get_setting( 'header_tagline_display' ) ) {
+		if ( $tagline && 'yes' == hello_elementor_get_setting( 'header_tagline_display' ) || $is_editor ) {
 		?>
 			<p class="site-description">
 				<?php 
