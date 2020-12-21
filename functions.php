@@ -149,7 +149,7 @@ if ( is_admin() ) {
 /**
  * If Elementor is installed and active, we can load the Elementor-specific Settings & Features
 */
-if( defined( 'ELEMENTOR_VERSION' ) ) {
+if ( defined( 'ELEMENTOR_VERSION' ) ) {
 	require get_template_directory() . '/includes/elementor-functions.php';
 }
 

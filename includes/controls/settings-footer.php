@@ -42,7 +42,7 @@ class Hello_Settings_Footer extends Tab_Base {
 			[
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label' => __( 'Site Logo', 'hello-elementor' ),
-				'default'=> 'yes',
+				'default' => 'yes',
 			]
 		);
 
@@ -51,7 +51,7 @@ class Hello_Settings_Footer extends Tab_Base {
 			[
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label' => __( 'Tagline', 'hello-elementor' ),
-				'default'=> 'yes',
+				'default' => 'yes',
 			]
 		);
 
@@ -60,7 +60,7 @@ class Hello_Settings_Footer extends Tab_Base {
 			[
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label' => __( 'Menu', 'hello-elementor' ),
-				'default'=> 'yes',
+				'default' => 'yes',
 			]
 		);
 
@@ -69,7 +69,7 @@ class Hello_Settings_Footer extends Tab_Base {
 			[
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label' => __( 'Copyright', 'hello-elementor' ),
-				'default'=> 'yes',
+				'default' => 'yes',
 			]
 		);
 
@@ -85,7 +85,7 @@ class Hello_Settings_Footer extends Tab_Base {
 				],
 				'prefix_class' => 'footer-',
 				'selector' => '.site-footer',
-				'default'=> 'default',
+				'default' => 'default',
 			]
 		);
 
@@ -93,7 +93,7 @@ class Hello_Settings_Footer extends Tab_Base {
 			\Elementor\Group_Control_Background::get_type(),
 			[
 				'name' => 'footer_background',
-				'label' => __( 'Background', 'plugin-domain' ),
+				'label' => __( 'Background', 'hello-elementor' ),
 				'types' => [ 'classic', 'gradient', 'video' ],
 				'selector' => '.site-footer',
 			]
@@ -120,7 +120,7 @@ class Hello_Settings_Footer extends Tab_Base {
 							'value' => 'yes',
 						],
 					],
-				]
+				],
 			]
 		);
 

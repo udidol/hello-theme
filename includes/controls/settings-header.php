@@ -42,7 +42,7 @@ class Hello_Settings_Header extends Tab_Base {
 			[
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label' => __( 'Logo', 'hello-elementor' ),
-				'default'=> 'yes'
+				'default' => 'yes',
 			]
 		);
 
@@ -51,7 +51,7 @@ class Hello_Settings_Header extends Tab_Base {
 			[
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label' => __( 'Menu', 'hello-elementor' ),
-				'default'=> 'yes',
+				'default' => 'yes',
 			]
 		);
 
@@ -60,7 +60,7 @@ class Hello_Settings_Header extends Tab_Base {
 			[
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label' => __( 'Tagline', 'hello-elementor' ),
-				'default'=> 'yes',
+				'default' => 'yes',
 			]
 		);
 
@@ -72,11 +72,11 @@ class Hello_Settings_Header extends Tab_Base {
 				'options' => [
 					'default' => __( 'Default', 'hello-elementor' ),
 					'inverted' => __( 'Invert', 'hello-elementor' ),
-					'stacked' => __( 'Centered', 'hello-elementor' )
+					'stacked' => __( 'Centered', 'hello-elementor' ),
 				],
 				'prefix_class' => 'header-',
 				'selector' => '.site-header',
-				'default'=> 'default',
+				'default' => 'default',
 			]
 		);
 
@@ -106,7 +106,7 @@ class Hello_Settings_Header extends Tab_Base {
 							'value' => 'yes',
 						],
 					],
-				]
+				],
 			],
 		);
 
