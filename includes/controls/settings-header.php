@@ -12,8 +12,6 @@ use Elementor\Core\Responsive\Responsive;
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-	
-
 
 class Hello_Settings_Header extends Tab_Base {
 
@@ -27,10 +25,10 @@ class Hello_Settings_Header extends Tab_Base {
 
 	public function get_icon() {
 		return 'eicon-header';
-	}	
+	}
 
 	protected function register_tab_controls() {
-		
+
 		$this->start_controls_section(
 			'header_section',
 			[
@@ -44,7 +42,7 @@ class Hello_Settings_Header extends Tab_Base {
 			[
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label' => __( 'Logo', 'hello-elementor' ),
-				'default'=> 'yes',
+				'default'=> 'yes'
 			]
 		);
 
@@ -74,7 +72,7 @@ class Hello_Settings_Header extends Tab_Base {
 				'options' => [
 					'default' => __( 'Default', 'hello-elementor' ),
 					'inverted' => __( 'Invert', 'hello-elementor' ),
-					'stacked' => __( 'Centered', 'hello-elementor' ),
+					'stacked' => __( 'Centered', 'hello-elementor' )
 				],
 				'prefix_class' => 'header-',
 				'selector' => '.site-header',
@@ -86,15 +84,14 @@ class Hello_Settings_Header extends Tab_Base {
 			\Elementor\Group_Control_Background::get_type(),
 			[
 				'name' => 'header_background',
-				'label' => __( 'Background', 'plugin-domain' ),
+				'label' => __( 'Background', 'hello-elementor' ),
 				'types' => [ 'classic', 'gradient', 'video' ],
 				'selector' => '.site-header',
 			]
 		);
 
 		$this->end_controls_section();
-		
-		
+
 		$this->start_controls_section(
 			'header_logo_section',
 			[
@@ -166,8 +163,8 @@ class Hello_Settings_Header extends Tab_Base {
 				'tab' => 'hello-settings-header',
 				'label' => __( 'Tagline', 'hello-elementor' ),
 				'condition'   => [
-		            'header_tagline_display' => 'yes',
-		        ],
+					'header_tagline_display' => 'yes',
+				],
 			]
 		);
 
@@ -199,7 +196,6 @@ class Hello_Settings_Header extends Tab_Base {
 		);
 
 		$this->end_controls_section();
-		
 
 		$this->start_controls_section(
 			'header_menu_tab',
@@ -207,8 +203,8 @@ class Hello_Settings_Header extends Tab_Base {
 				'tab' => 'hello-settings-header',
 				'label' => __( 'Menu', 'hello-elementor' ),
 				'condition'   => [
-		            'header_menu_display' => 'yes',
-		        ],
+					'header_menu_display' => 'yes',
+				],
 			]
 		);
 
@@ -219,7 +215,6 @@ class Hello_Settings_Header extends Tab_Base {
 		}
 
 		if ( empty( $menus ) ) {
-			
 			$this->add_control(
 				'header_menu_notice',
 				[
@@ -230,7 +225,6 @@ class Hello_Settings_Header extends Tab_Base {
 				]
 			);
 		} else {
-			
 			$this->add_control(
 				'header_menu',
 				[
@@ -242,7 +236,7 @@ class Hello_Settings_Header extends Tab_Base {
 					'description' => sprintf( __( 'Go to the <a href="%s" target="_blank">Menus screen</a> to manage your menus.', 'hello-elementor' ), admin_url( 'nav-menus.php' ) ),
 				]
 			);
-			
+
 			$this->add_control(
 				'header_menu_layout',
 				[
@@ -285,10 +279,10 @@ class Hello_Settings_Header extends Tab_Base {
 					'label' => __( 'Color', 'hello-elementor' ),
 					'type' => \Elementor\Controls_Manager::COLOR,
 					'condition'   => [
-			            'footer_copyright_display' => 'yes',
-			        ],
+						'header_menu_display' => 'yes',
+					],
 					'selectors' => [
-						'.site-footer .copyright p' => 'color: {{VALUE}};',
+						'.site-header .menu li a' => 'color: {{VALUE}};',
 					],
 				]
 			);
@@ -299,15 +293,14 @@ class Hello_Settings_Header extends Tab_Base {
 					'name' => 'header_menu_typography',
 					'label' => __( 'Typography', 'hello-elementor' ),
 					'condition'   => [
-			            'footer_copyright_display' => 'yes',
-			        ],
-					'selector' => '.site-footer .copyright p',
+						'header_menu_display' => 'yes',
+					],
+					'selector' => '.site-header .menu li',
 				]
 			);
 		}
 
 		$this->end_controls_section();
-				
 	}
 }
 

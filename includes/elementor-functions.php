@@ -14,12 +14,11 @@ use Elementor\Core\Kits\Documents\Tabs;
 
 add_action( 'elementor/init', 'hello_elementor_settings_init' );
 
-function hello_elementor_settings_init(){
-	
+function hello_elementor_settings_init() {
 	require 'controls/settings-header.php';
 	require 'controls/settings-footer.php';
 }
-	
+
 /**
  * Helper function to return a setting.
  *
@@ -28,23 +27,19 @@ function hello_elementor_settings_init(){
  * @param  string $setting_id
  * @return string|array same as the Elementor internal function does.
  */
-function hello_elementor_get_setting( $setting_id ){
-	
+function hello_elementor_get_setting( $setting_id ) {
+
 	global $hello_elementor_settings;
-	
-	if ( ! isset( $hello_elementor_settings['active_kit'] ) ){
-		
+
+	if ( ! isset( $hello_elementor_settings['active_kit'] ) ) {
 		$kit = Plugin::$instance->documents->get( Plugin::$instance->kits_manager->get_active_id(), false );
 		$hello_elementor_settings['kit_settings'] = $kit->get_settings();
 	}
-	
-	$return = NULL;
-	
-	if ( isset( $hello_elementor_settings['kit_settings'][$setting_id] ) ){
-		
-		$return = $hello_elementor_settings['kit_settings'][$setting_id];
+
+	if ( isset( $hello_elementor_settings['kit_settings'][ $setting_id ] ) ) {
+		$return = $hello_elementor_settings['kit_settings'][ $setting_id ];
 	}
-	
+
 	return apply_filters( 'hello_elementor_' . $setting_id, $return );
 }
 
@@ -53,19 +48,18 @@ function hello_elementor_get_setting( $setting_id ){
  *
  * @return string
  */
-function hello_get_header_layout_class(){
-	
+function hello_get_header_layout_class() {
+
 	$header_layout = hello_elementor_get_setting( 'header_layout' );
-	
+
 	$return = '';
-	
-	if ( 'inverted' == $header_layout ){
+
+	if ( 'inverted' == $header_layout ) {
 		$return = 'header-inverted';
-	}
-	elseif ( 'stacked' == $header_layout ){
+	} elseif ( 'stacked' == $header_layout ) {
 		$return = 'header-stacked';
 	}
-	
+
 	return $return;
 }
 
@@ -74,18 +68,17 @@ function hello_get_header_layout_class(){
  *
  * @return string
  */
-function hello_get_footer_layout_class(){
-	
+function hello_get_footer_layout_class() {
+
 	$header_layout = hello_elementor_get_setting( 'footer_layout' );
-	
+
 	$return = '';
-	
-	if ( 'inverted' == $header_layout ){
+
+	if ( 'inverted' == $header_layout ) {
 		$return = 'footer-inverted';
-	}
-	elseif ( 'centered' == $header_layout ){
+	} elseif ( 'centered' == $header_layout ) {
 		$return = 'footer-stacked';
 	}
-	
+
 	return $return;
 }
