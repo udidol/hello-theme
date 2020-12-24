@@ -218,11 +218,12 @@ class Hello_Settings_Header extends Tab_Base {
 
 		$available_menus = wp_get_nav_menus();
 
+		$menus = [ '0' => __( '— Select a Menu —', 'hello-elementor' ) ];
 		foreach ( $available_menus as $available_menu ) {
-			$menus[ $available_menu->slug ] = $available_menu->name;
+			$menus[ $available_menu->term_id ] = $available_menu->name;
 		}
 
-		if ( empty( $menus ) ) {
+		if ( 1 == count( $menus ) ) {
 			$this->add_control(
 				'header_menu_notice',
 				[
@@ -240,7 +241,6 @@ class Hello_Settings_Header extends Tab_Base {
 					'type' => \Elementor\Controls_Manager::SELECT,
 					'options' => $menus,
 					'default' => array_keys( $menus )[0],
-					'save_default' => true,
 					'description' => sprintf( __( 'Go to the <a href="%s" target="_blank">Menus screen</a> to manage your menus.', 'hello-elementor' ), admin_url( 'nav-menus.php' ) ),
 				]
 			);
@@ -309,6 +309,15 @@ class Hello_Settings_Header extends Tab_Base {
 		}
 
 		$this->end_controls_section();
+	}
+	
+	public function on_save( $data ) {
+		
+		// Save chosen menu to the WP settings.
+		$menu_id = $data['settings']['header_menu'];
+		$locations = get_theme_mod( 'nav_menu_locations' );
+		$locations['menu-1'] = (int)$menu_id;
+		set_theme_mod( 'nav_menu_locations', $locations );
 	}
 }
 
