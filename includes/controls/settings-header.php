@@ -110,19 +110,28 @@ class Hello_Settings_Header extends Tab_Base {
 			],
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'header_logo_width',
 			[
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'label' => __( 'Logo Width', 'hello-elementor' ),
 				'description' => sprintf( __( 'Go to <a href="%s">Site Identity</a> to manage you site\'s logo', 'hello-elementor' ), '#' ),
 				'size_units' => [ '%', 'px', 'vh' ],
-				[
-					'unit' => 'px',
-					'size' => '',
+				'range' => [
+					'px' => [
+						'max' => 2000,
+						'step' => 1,
+					],
+					'%' => [
+						'max' => 100,
+						'step' => 1,
+					],
 				],
 				'condition'   => [
 					'header_logo_display' => 'yes',
+				],
+				'selectors' => [
+					'.site-branding img' => 'width: {{SIZE}}{{UNIT}}; max-width: {{SIZE}}{{UNIT}}',
 				],
 			]
 		);
@@ -151,7 +160,6 @@ class Hello_Settings_Header extends Tab_Base {
 					'header_logo_display' => 'yes',
 				],
 				'selector' => '.site-header h1.site-title',
-
 			]
 		);
 
