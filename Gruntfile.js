@@ -11,6 +11,8 @@ module.exports = function( grunt ) {
 	grunt.initConfig( {
 		pkg: grunt.file.readJSON( 'package.json' ),
 
+		webpack: require( './webpack' ),
+
 		sass: {
 			dist: {
 				files: [ {
@@ -128,6 +130,10 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'wp_readme', [
 		'wp_readme_to_markdown',
 	] );
+
+	grunt.registerTask( 'watch_scripts', ( isDevMode = false ) => {
+		grunt.task.run( 'webpack:development' );
+	} );
 
 	grunt.registerTask( 'styles', [
 		'sass',

@@ -4,6 +4,7 @@ node_modules/
 build/
 log/
 vendor/
+assets/js/
 composer.lock
 package-lock.json
 .DS_Store

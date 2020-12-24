@@ -2,10 +2,7 @@
 
 namespace Elementor\Core\Kits\Documents\Tabs;
 
-use Elementor\Plugin;
-use Elementor\Core\Kits\Documents\Tabs\Tab_Base;
 use Elementor\Controls_Manager;
-use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Core\Responsive\Responsive;
 
 
@@ -25,6 +22,14 @@ class Hello_Settings_Header extends Tab_Base {
 
 	public function get_icon() {
 		return 'eicon-header';
+	}
+
+	public function get_help_url() {
+		return '';
+	}
+
+	public function get_additional_tab_content() {
+		return '';
 	}
 
 	protected function register_tab_controls() {
@@ -107,7 +112,7 @@ class Hello_Settings_Header extends Tab_Base {
 						],
 					],
 				],
-			],
+			]
 		);
 
 		$this->add_control(
