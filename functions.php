@@ -109,6 +109,13 @@ if ( ! function_exists( 'hello_elementor_scripts_styles' ) ) {
 				HELLO_ELEMENTOR_VERSION
 			);
 		}
+		
+		wp_enqueue_script(
+			'hello-elementor-theme-script',
+			get_template_directory_uri() . '/assets/js/script.js',
+			[ 'jquery' ],
+			HELLO_ELEMENTOR_VERSION
+		);
 	}
 }
 add_action( 'wp_enqueue_scripts', 'hello_elementor_scripts_styles' );

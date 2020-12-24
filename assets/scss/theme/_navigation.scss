@@ -1,0 +1,108 @@
+/* Navigation Menu's
+   ========================================================================== */
+
+.site-navigation-toggle-holder {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-grow: 1;
+  
+  .site-navigation-toggle {
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  font-size: 22px;
+	  padding: 0.25em;
+	  cursor: pointer;
+	  border: 0 solid;
+	  border-radius: 3px;
+	  background-color: rgba(0, 0, 0, 0.05);
+	  color: #494c4f;
+	}
+	
+	&.elementor-active .site-navigation-toggle i:before {
+	  content: '\e87f';
+	}
+}
+.site-navigation-dropdown {
+	margin-top: 10px;
+  transition: max-height 0.3s, transform 0.3s;
+  transform-origin: top;
+  position: absolute;
+  bottom: 0;
+  z-index: 10000;
+  width: 100%;
+  
+	.site-navigation-toggle-holder:not(.elementor-active) + & {
+	  transform: scaleY(0);
+	  max-height: 0;
+	}
+	.site-navigation-toggle-holder.elementor-active + & {
+	  transform: scaleY(1);
+	  max-height: 100vh;
+	}
+	
+	& ul{
+	  padding: 0;
+	}
+	
+	& ul.menu {
+	  position: absolute;
+	  width: 100%;
+	  padding: 0;
+	  margin: 0;
+	  background: white;
+	  
+	  & li {
+	  display: block;
+	  width: 100%;
+	  display: block;
+	  position: relative;
+		}
+		& li a {
+		  display: block;
+		  padding: 20px;
+		  background: #ffffff;
+		  color: #55595c;
+		  box-shadow: inset 0 -1px 0 #0000001a;
+		}
+		& li.current-menu-item a {
+		  color: white;
+		  background: #55595c;
+		}
+		& > li li {
+		  transition: max-height 0.3s, transform 0.3s;
+		  transform-origin: top;
+		  
+		  transform: scaleY(0);
+		  max-height: 0;
+		}
+		& li.elementor-active > ul > li {
+		  transform: scaleY(1);
+		  max-height: 100vh;
+		}
+		& li.menu-item-has-children:after {
+		  display: block;
+		  content: '\25BE';
+		  font-size: 1.5em;
+		  color: #666666;
+		  position: absolute;
+		  right: 14px;
+		  top: 1.2em;
+		  transform: translateY(-50%);
+		}
+	}
+	
+}
+@media (min-width: 1024px) {
+  .site-header .site-navigation-toggle,
+  .site-header .site-navigation-dropdown {
+    display: none;
+  }
+}
+@media (max-width: 1024px) {
+  .site-header .site-navigation {
+    display: none !important;
+  }
+}
+
