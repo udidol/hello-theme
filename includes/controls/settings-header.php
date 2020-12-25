@@ -61,6 +61,15 @@ class Hello_Settings_Header extends Tab_Base {
 		);
 
 		$this->add_control(
+			'header_title_display',
+			[
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label' => __( 'Site Name', 'hello-elementor' ),
+				'default' => 'yes',
+			]
+		);
+
+		$this->add_control(
 			'header_tagline_display',
 			[
 				'type' => \Elementor\Controls_Manager::SWITCHER,
@@ -148,7 +157,7 @@ class Hello_Settings_Header extends Tab_Base {
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'dynamic' => [],
 				'condition'   => [
-					'header_logo_display' => 'yes',
+					'header_title_display' => 'yes',
 				],
 				'selectors' => [
 					'.site-header h1.site-title a' => 'color: {{VALUE}};',
@@ -228,7 +237,7 @@ class Hello_Settings_Header extends Tab_Base {
 			$menus[ $available_menu->term_id ] = $available_menu->name;
 		}
 
-		if ( 1 == count( $menus ) ) {
+		if ( 1 === count( $menus ) ) {
 			$this->add_control(
 				'header_menu_notice',
 				[
@@ -315,13 +324,12 @@ class Hello_Settings_Header extends Tab_Base {
 
 		$this->end_controls_section();
 	}
-	
+
 	public function on_save( $data ) {
-		
 		// Save chosen menu to the WP settings.
 		$menu_id = $data['settings']['header_menu'];
 		$locations = get_theme_mod( 'nav_menu_locations' );
-		$locations['menu-1'] = (int)$menu_id;
+		$locations['menu-1'] = (int) $menu_id;
 		set_theme_mod( 'nav_menu_locations', $locations );
 	}
 }

@@ -21,7 +21,7 @@ $tagline   = get_bloginfo( 'description', 'display' );
 		if ( 'yes' == hello_elementor_get_setting( 'header_logo_display' ) || $is_editor ) {
 			if ( has_custom_logo() ) {
 				the_custom_logo();
-			} elseif ( ( $site_name  && 'yes' == hello_elementor_get_setting( 'header_tagline_display' ) ) || $is_editor  ) {
+			} elseif ( ( $site_name  && 'yes' === hello_elementor_get_setting( 'header_title_display' ) ) || $is_editor  ) {
 			?>
 				<h1 class="site-title">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php esc_attr_e( 'Home', 'hello-elementor' ); ?>" rel="home">
@@ -32,9 +32,9 @@ $tagline   = get_bloginfo( 'description', 'display' );
 			}
 		}
 
-		if ( $tagline && 'yes' == hello_elementor_get_setting( 'header_tagline_display' ) || $is_editor ) {
+		if ( ( $tagline && 'yes' == hello_elementor_get_setting( 'header_tagline_display' ) ) || $is_editor ) {
 		?>
-			<p class="site-description">
+		<p class="site-description">
 				<?php
 					echo esc_html( $tagline );
 				?>
@@ -45,18 +45,15 @@ $tagline   = get_bloginfo( 'description', 'display' );
 	</div>
 
 	<?php if ( has_nav_menu( 'menu-1' ) ) : ?>
-		
 		<nav class="site-navigation" role="navigation">
 			<?php wp_nav_menu( array( 'theme_location' => 'menu-1' ) ); ?>
 		</nav>
-		
 		<div class="site-navigation-toggle-holder">
 			<div class="site-navigation-toggle">
 				<i class="eicon-menu-bar"></i>
 				<span class="elementor-screen-only">Menu</span>
 			</div>
 		</div>
-			
 		<nav class="site-navigation-dropdown" role="navigation">
 			<?php wp_nav_menu( array( 'theme_location' => 'menu-1' ) ); ?>
 		</nav>

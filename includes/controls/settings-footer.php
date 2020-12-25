@@ -47,6 +47,15 @@ class Hello_Settings_Footer extends Tab_Base {
 		);
 
 		$this->add_control(
+			'footer_title_display',
+			[
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label' => __( 'Site Name', 'hello-elementor' ),
+				'default' => 'yes',
+			]
+		);
+
+		$this->add_control(
 			'footer_tagline_display',
 			[
 				'type' => \Elementor\Controls_Manager::SWITCHER,
