@@ -82,3 +82,15 @@ function hello_get_footer_layout_class() {
 
 	return $return;
 }
+
+add_action( 'elementor/editor/after_enqueue_scripts', function() {
+	$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+
+	wp_enqueue_script(
+		'hello-theme-editor',
+		get_template_directory_uri() . '/assets/js/hello-elementor' . $suffix . '.js',
+		[ 'jquery', 'elementor-editor' ],
+		'1.0.0',
+		true
+	);
+} );
