@@ -145,13 +145,13 @@ class Hello_Settings_Footer extends Tab_Base {
 		);
 
 		$this->add_control(
-			'hello_footer_logo_color',
+			'hello_footer_title_color',
 			[
-				'label' => __( 'Title Color', 'hello-elementor' ),
+				'label' => __( 'Text Color', 'hello-elementor' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'dynamic' => [],
 				'condition'   => [
-					'hello_footer_logo_display' => 'yes',
+					'hello_footer_title_display' => 'yes',
 				],
 				'selectors' => [
 					'.site-footer h4.site-title a' => 'color: {{VALUE}};',
@@ -163,9 +163,9 @@ class Hello_Settings_Footer extends Tab_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'hello_footer_title_typography',
-				'label' => __( 'Title Typography', 'hello-elementor' ),
+				'label' => __( 'Typography', 'hello-elementor' ),
 				'condition'   => [
-					'hello_footer_logo_display' => 'yes',
+					'hello_footer_title_display' => 'yes',
 				],
 				'selector' => '.site-footer h4.site-title',
 

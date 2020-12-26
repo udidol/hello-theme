@@ -151,9 +151,9 @@ class Hello_Settings_Header extends Tab_Base {
 		);
 
 		$this->add_control(
-			'hello_header_logo_color',
+			'hello_header_title_color',
 			[
-				'label' => __( 'Title Color', 'hello-elementor' ),
+				'label' => __( 'Text Color', 'hello-elementor' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'dynamic' => [],
 				'condition'   => [
@@ -169,7 +169,7 @@ class Hello_Settings_Header extends Tab_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'hello_header_title_typography',
-				'label' => __( 'Title Typography', 'hello-elementor' ),
+				'label' => __( 'Typography', 'hello-elementor' ),
 				'condition'   => [
 					'hello_header_logo_display' => 'yes',
 				],
