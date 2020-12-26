@@ -30,7 +30,7 @@ class Hello_Settings_Footer extends Tab_Base {
 	protected function register_tab_controls() {
 
 		$this->start_controls_section(
-			'footer_section',
+			'hello_footer_section',
 			[
 				'tab' => 'hello-settings-footer',
 				'label' => __( 'Footer', 'hello-elementor' ),
@@ -38,7 +38,7 @@ class Hello_Settings_Footer extends Tab_Base {
 		);
 
 		$this->add_control(
-			'footer_logo_display',
+			'hello_footer_logo_display',
 			[
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label' => __( 'Site Logo', 'hello-elementor' ),
@@ -47,7 +47,7 @@ class Hello_Settings_Footer extends Tab_Base {
 		);
 
 		$this->add_control(
-			'footer_title_display',
+			'hello_footer_title_display',
 			[
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label' => __( 'Site Name', 'hello-elementor' ),
@@ -56,7 +56,7 @@ class Hello_Settings_Footer extends Tab_Base {
 		);
 
 		$this->add_control(
-			'footer_tagline_display',
+			'hello_footer_tagline_display',
 			[
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label' => __( 'Tagline', 'hello-elementor' ),
@@ -65,7 +65,7 @@ class Hello_Settings_Footer extends Tab_Base {
 		);
 
 		$this->add_control(
-			'footer_menu_display',
+			'hello_footer_menu_display',
 			[
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label' => __( 'Menu', 'hello-elementor' ),
@@ -74,7 +74,7 @@ class Hello_Settings_Footer extends Tab_Base {
 		);
 
 		$this->add_control(
-			'footer_copyright_display',
+			'hello_footer_copyright_display',
 			[
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label' => __( 'Copyright', 'hello-elementor' ),
@@ -83,7 +83,7 @@ class Hello_Settings_Footer extends Tab_Base {
 		);
 
 		$this->add_control(
-			'footer_layout',
+			'hello_footer_layout',
 			[
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'label' => __( 'Layout', 'hello-elementor' ),
@@ -101,7 +101,7 @@ class Hello_Settings_Footer extends Tab_Base {
 		$this->add_group_control(
 			\Elementor\Group_Control_Background::get_type(),
 			[
-				'name' => 'footer_background',
+				'name' => 'hello_footer_background',
 				'label' => __( 'Background', 'hello-elementor' ),
 				'types' => [ 'classic', 'gradient', 'video' ],
 				'selector' => '.site-footer',
@@ -111,7 +111,7 @@ class Hello_Settings_Footer extends Tab_Base {
 		$this->end_controls_section();
 
 		$this->start_controls_section(
-			'footer_logo_section',
+			'hello_footer_logo_section',
 			[
 				'tab' => 'hello-settings-footer',
 				'label' => __( 'Logo', 'hello-elementor' ),
@@ -119,12 +119,12 @@ class Hello_Settings_Footer extends Tab_Base {
 					'relation' => 'or',
 					'terms' => [
 						[
-							'name' => 'footer_logo_display',
+							'name' => 'hello_footer_logo_display',
 							'operator' => '=',
 							'value' => 'yes',
 						],
 						[
-							'name' => 'footer_tagline_display',
+							'name' => 'hello_footer_tagline_display',
 							'operator' => '=',
 							'value' => 'yes',
 						],
@@ -134,24 +134,24 @@ class Hello_Settings_Footer extends Tab_Base {
 		);
 
 		$this->add_responsive_control(
-			'footer_logo_width',
+			'hello_footer_logo_width',
 			[
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'label' => __( 'Logo Width', 'hello-elementor' ),
 				'condition'   => [
-					'footer_logo_display' => 'yes',
+					'hello_footer_logo_display' => 'yes',
 				],
 			]
 		);
 
 		$this->add_control(
-			'footer_logo_color',
+			'hello_footer_logo_color',
 			[
 				'label' => __( 'Title Color', 'hello-elementor' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'dynamic' => [],
 				'condition'   => [
-					'footer_logo_display' => 'yes',
+					'hello_footer_logo_display' => 'yes',
 				],
 				'selectors' => [
 					'.site-footer h4.site-title a' => 'color: {{VALUE}};',
@@ -162,10 +162,10 @@ class Hello_Settings_Footer extends Tab_Base {
 		$this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
-				'name' => 'footer_title_typography',
+				'name' => 'hello_footer_title_typography',
 				'label' => __( 'Title Typography', 'hello-elementor' ),
 				'condition'   => [
-					'footer_logo_display' => 'yes',
+					'hello_footer_logo_display' => 'yes',
 				],
 				'selector' => '.site-footer h4.site-title',
 
@@ -175,24 +175,24 @@ class Hello_Settings_Footer extends Tab_Base {
 		$this->end_controls_section();
 
 		$this->start_controls_section(
-			'footer_tagline',
+			'hello_footer_tagline',
 			[
 				'tab' => 'hello-settings-footer',
 				'label' => __( 'Tagline', 'hello-elementor' ),
 				'condition'   => [
-					'footer_tagline_display' => 'yes',
+					'hello_footer_tagline_display' => 'yes',
 				],
 			]
 		);
 
 		$this->add_control(
-			'footer_tagline_color',
+			'hello_footer_tagline_color',
 			[
 				'label' => __( 'Tagline Color', 'hello-elementor' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'dynamic' => [],
 				'condition'   => [
-					'footer_tagline_display' => 'yes',
+					'hello_footer_tagline_display' => 'yes',
 				],
 				'selectors' => [
 					'.site-footer .site-description' => 'color: {{VALUE}};',
@@ -203,10 +203,10 @@ class Hello_Settings_Footer extends Tab_Base {
 		$this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
-				'name' => 'footer_tagline_typography',
+				'name' => 'hello_footer_tagline_typography',
 				'label' => __( 'Tagline Typography', 'hello-elementor' ),
 				'condition'   => [
-					'footer_tagline_display' => 'yes',
+					'hello_footer_tagline_display' => 'yes',
 				],
 				'selector' => '.site-footer .site-description',
 			]
@@ -215,12 +215,12 @@ class Hello_Settings_Footer extends Tab_Base {
 		$this->end_controls_section();
 
 		$this->start_controls_section(
-			'footer_menu',
+			'hello_footer_menu',
 			[
 				'tab' => 'hello-settings-footer',
 				'label' => __( 'Menu', 'hello-elementor' ),
 				'condition'   => [
-					'footer_menu_display' => 'yes',
+					'hello_footer_menu_display' => 'yes',
 				],
 			]
 		);
@@ -233,7 +233,7 @@ class Hello_Settings_Footer extends Tab_Base {
 
 		if ( empty( $menus ) ) {
 			$this->add_control(
-				'footer_menu_notice',
+				'hello_footer_menu_notice',
 				[
 					'type' => \Elementor\Controls_Manager::RAW_HTML,
 					'raw' => '<strong>' . __( 'There are no menus in your site.', 'hello-elementor' ) . '</strong><br>' . sprintf( __( 'Go to <a href="%s" target="_blank">Menus screen</a> to create one.', 'hello-elementor' ), admin_url( 'nav-menus.php?action=edit&menu=0' ) ),
@@ -255,7 +255,7 @@ class Hello_Settings_Footer extends Tab_Base {
 			);
 
 			$this->add_control(
-				'footer_menu_layout',
+				'hello_footer_menu_layout',
 				[
 					'label' => __( 'Menu Layout', 'hello-elementor' ),
 					'type' => \Elementor\Controls_Manager::SELECT,
@@ -271,7 +271,7 @@ class Hello_Settings_Footer extends Tab_Base {
 			$breakpoints = Responsive::get_breakpoints();
 
 			$this->add_control(
-				'footer_menu_dropdown',
+				'hello_footer_menu_dropdown',
 				[
 					'label' => __( 'Breakpoint', 'hello-elementor' ),
 					'type' => \Elementor\Controls_Manager::SELECT,
@@ -285,18 +285,18 @@ class Hello_Settings_Footer extends Tab_Base {
 					],
 					'prefix_class' => 'elementor-nav-menu--dropdown-',
 					'condition' => [
-						'footer_menu_layout!' => 'dropdown',
+						'hello_footer_menu_layout!' => 'dropdown',
 					],
 				]
 			);
 
 			$this->add_control(
-				'footer_menu_color',
+				'hello_footer_menu_color',
 				[
 					'label' => __( 'Color', 'hello-elementor' ),
 					'type' => \Elementor\Controls_Manager::COLOR,
 					'condition'   => [
-						'footer_copyright_display' => 'yes',
+						'hello_footer_copyright_display' => 'yes',
 					],
 					'selectors' => [
 						'.site-footer .copyright p' => 'color: {{VALUE}};',
@@ -307,10 +307,10 @@ class Hello_Settings_Footer extends Tab_Base {
 			$this->add_group_control(
 				\Elementor\Group_Control_Typography::get_type(),
 				[
-					'name' => 'footer_menu_typography',
+					'name' => 'hello_footer_menu_typography',
 					'label' => __( 'Typography', 'hello-elementor' ),
 					'condition'   => [
-						'footer_copyright_display' => 'yes',
+						'hello_footer_copyright_display' => 'yes',
 					],
 					'selector' => '.site-footer .copyright p',
 				]
@@ -320,18 +320,18 @@ class Hello_Settings_Footer extends Tab_Base {
 		$this->end_controls_section();
 
 		$this->start_controls_section(
-			'footer_copyright_section',
+			'hello_footer_copyright_section',
 			[
 				'tab' => 'hello-settings-footer',
 				'label' => __( 'Copyright', 'hello-elementor' ),
 				'condition'   => [
-					'footer_copyright_display' => 'yes',
+					'hello_footer_copyright_display' => 'yes',
 				],
 			]
 		);
 
 		$this->add_control(
-			'footer_copyright_text',
+			'hello_footer_copyright_text',
 			[
 				'type' => \Elementor\Controls_Manager::TEXTAREA,
 				'default' => 'All rights reserved',
@@ -339,12 +339,12 @@ class Hello_Settings_Footer extends Tab_Base {
 		);
 
 		$this->add_control(
-			'footer_copyright_color',
+			'hello_footer_copyright_color',
 			[
 				'label' => __( 'Copyright Color', 'hello-elementor' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'condition'   => [
-					'footer_copyright_display' => 'yes',
+					'hello_footer_copyright_display' => 'yes',
 				],
 				'selectors' => [
 					'.site-footer .copyright p' => 'color: {{VALUE}};',
@@ -355,10 +355,10 @@ class Hello_Settings_Footer extends Tab_Base {
 		$this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
-				'name' => 'footer_copyright_typography',
+				'name' => 'hello_footer_copyright_typography',
 				'label' => __( 'Copyright Typography', 'hello-elementor' ),
 				'condition'   => [
-					'footer_copyright_display' => 'yes',
+					'hello_footer_copyright_display' => 'yes',
 				],
 				'selector' => '.site-footer .copyright p',
 			]

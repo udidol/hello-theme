@@ -35,7 +35,7 @@ class Hello_Settings_Header extends Tab_Base {
 	protected function register_tab_controls() {
 
 		$this->start_controls_section(
-			'header_section',
+			'hello_header_section',
 			[
 				'tab' => 'hello-settings-header',
 				'label' => __( 'Header', 'hello-elementor' ),
@@ -43,7 +43,7 @@ class Hello_Settings_Header extends Tab_Base {
 		);
 
 		$this->add_control(
-			'header_logo_display',
+			'hello_header_logo_display',
 			[
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label' => __( 'Logo', 'hello-elementor' ),
@@ -52,7 +52,7 @@ class Hello_Settings_Header extends Tab_Base {
 		);
 
 		$this->add_control(
-			'header_menu_display',
+			'hello_header_menu_display',
 			[
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label' => __( 'Menu', 'hello-elementor' ),
@@ -61,7 +61,7 @@ class Hello_Settings_Header extends Tab_Base {
 		);
 
 		$this->add_control(
-			'header_title_display',
+			'hello_header_title_display',
 			[
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label' => __( 'Site Name', 'hello-elementor' ),
@@ -70,7 +70,7 @@ class Hello_Settings_Header extends Tab_Base {
 		);
 
 		$this->add_control(
-			'header_tagline_display',
+			'hello_header_tagline_display',
 			[
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label' => __( 'Tagline', 'hello-elementor' ),
@@ -79,7 +79,7 @@ class Hello_Settings_Header extends Tab_Base {
 		);
 
 		$this->add_control(
-			'header_layout',
+			'hello_header_layout',
 			[
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'label' => __( 'Layout', 'hello-elementor' ),
@@ -97,7 +97,7 @@ class Hello_Settings_Header extends Tab_Base {
 		$this->add_group_control(
 			\Elementor\Group_Control_Background::get_type(),
 			[
-				'name' => 'header_background',
+				'name' => 'hello_header_background',
 				'label' => __( 'Background', 'hello-elementor' ),
 				'types' => [ 'classic', 'gradient', 'video' ],
 				'selector' => '.site-header',
@@ -107,7 +107,7 @@ class Hello_Settings_Header extends Tab_Base {
 		$this->end_controls_section();
 
 		$this->start_controls_section(
-			'header_logo_section',
+			'hello_header_logo_section',
 			[
 				'tab' => 'hello-settings-header',
 				'label' => __( 'Logo', 'hello-elementor' ),
@@ -115,7 +115,7 @@ class Hello_Settings_Header extends Tab_Base {
 					'relation' => 'or',
 					'terms' => [
 						[
-							'name' => 'header_logo_display',
+							'name' => 'hello_header_logo_display',
 							'operator' => '=',
 							'value' => 'yes',
 						],
@@ -125,7 +125,7 @@ class Hello_Settings_Header extends Tab_Base {
 		);
 
 		$this->add_responsive_control(
-			'header_logo_width',
+			'hello_header_logo_width',
 			[
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'label' => __( 'Logo Width', 'hello-elementor' ),
@@ -142,7 +142,7 @@ class Hello_Settings_Header extends Tab_Base {
 					],
 				],
 				'condition'   => [
-					'header_logo_display' => 'yes',
+					'hello_header_logo_display' => 'yes',
 				],
 				'selectors' => [
 					'.site-branding img' => 'width: {{SIZE}}{{UNIT}}; max-width: {{SIZE}}{{UNIT}}',
@@ -151,13 +151,13 @@ class Hello_Settings_Header extends Tab_Base {
 		);
 
 		$this->add_control(
-			'header_logo_color',
+			'hello_header_logo_color',
 			[
 				'label' => __( 'Title Color', 'hello-elementor' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'dynamic' => [],
 				'condition'   => [
-					'header_title_display' => 'yes',
+					'hello_header_title_display' => 'yes',
 				],
 				'selectors' => [
 					'.site-header h1.site-title a' => 'color: {{VALUE}};',
@@ -168,10 +168,10 @@ class Hello_Settings_Header extends Tab_Base {
 		$this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
-				'name' => 'header_title_typography',
+				'name' => 'hello_header_title_typography',
 				'label' => __( 'Title Typography', 'hello-elementor' ),
 				'condition'   => [
-					'header_logo_display' => 'yes',
+					'hello_header_logo_display' => 'yes',
 				],
 				'selector' => '.site-header h1.site-title',
 			]
@@ -180,24 +180,24 @@ class Hello_Settings_Header extends Tab_Base {
 		$this->end_controls_section();
 
 		$this->start_controls_section(
-			'header_tagline',
+			'hello_header_tagline',
 			[
 				'tab' => 'hello-settings-header',
 				'label' => __( 'Tagline', 'hello-elementor' ),
 				'condition'   => [
-					'header_tagline_display' => 'yes',
+					'hello_header_tagline_display' => 'yes',
 				],
 			]
 		);
 
 		$this->add_control(
-			'header_tagline_color',
+			'hello_header_tagline_color',
 			[
 				'label' => __( 'Tagline Color', 'hello-elementor' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'dynamic' => [],
 				'condition'   => [
-					'header_tagline_display' => 'yes',
+					'hello_header_tagline_display' => 'yes',
 				],
 				'selectors' => [
 					'.site-header .site-description' => 'color: {{VALUE}};',
@@ -208,10 +208,10 @@ class Hello_Settings_Header extends Tab_Base {
 		$this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
-				'name' => 'header_tagline_typography',
+				'name' => 'hello_header_tagline_typography',
 				'label' => __( 'Tagline Typography', 'hello-elementor' ),
 				'condition'   => [
-					'header_tagline_display' => 'yes',
+					'hello_header_tagline_display' => 'yes',
 				],
 				'selector' => '.site-header .site-description',
 			]
@@ -220,12 +220,12 @@ class Hello_Settings_Header extends Tab_Base {
 		$this->end_controls_section();
 
 		$this->start_controls_section(
-			'header_menu_tab',
+			'hello_header_menu_tab',
 			[
 				'tab' => 'hello-settings-header',
 				'label' => __( 'Menu', 'hello-elementor' ),
 				'condition'   => [
-					'header_menu_display' => 'yes',
+					'hello_header_menu_display' => 'yes',
 				],
 			]
 		);
@@ -239,7 +239,7 @@ class Hello_Settings_Header extends Tab_Base {
 
 		if ( 1 === count( $menus ) ) {
 			$this->add_control(
-				'header_menu_notice',
+				'hello_header_menu_notice',
 				[
 					'type' => \Elementor\Controls_Manager::RAW_HTML,
 					'raw' => '<strong>' . __( 'There are no menus in your site.', 'hello-elementor' ) . '</strong><br>' . sprintf( __( 'Go to <a href="%s" target="_blank">Menus screen</a> to create one.', 'hello-elementor' ), admin_url( 'nav-menus.php?action=edit&menu=0' ) ),
@@ -249,7 +249,7 @@ class Hello_Settings_Header extends Tab_Base {
 			);
 		} else {
 			$this->add_control(
-				'header_menu',
+				'hello_header_menu',
 				[
 					'label' => __( 'Menu', 'hello-elementor' ),
 					'type' => \Elementor\Controls_Manager::SELECT,
@@ -260,7 +260,7 @@ class Hello_Settings_Header extends Tab_Base {
 			);
 
 			$this->add_control(
-				'header_menu_layout',
+				'hello_header_menu_layout',
 				[
 					'label' => __( 'Menu Layout', 'hello-elementor' ),
 					'type' => \Elementor\Controls_Manager::SELECT,
@@ -276,7 +276,7 @@ class Hello_Settings_Header extends Tab_Base {
 			$breakpoints = Responsive::get_breakpoints();
 
 			$this->add_control(
-				'header_menu_dropdown',
+				'hello_header_menu_dropdown',
 				[
 					'label' => __( 'Breakpoint', 'hello-elementor' ),
 					'type' => \Elementor\Controls_Manager::SELECT,
@@ -290,18 +290,18 @@ class Hello_Settings_Header extends Tab_Base {
 					],
 					'prefix_class' => 'elementor-nav-menu--dropdown-',
 					'condition' => [
-						'header_menu_layout!' => 'dropdown',
+						'hello_header_menu_layout!' => 'dropdown',
 					],
 				]
 			);
 
 			$this->add_control(
-				'header_menu_color',
+				'hello_header_menu_color',
 				[
 					'label' => __( 'Color', 'hello-elementor' ),
 					'type' => \Elementor\Controls_Manager::COLOR,
 					'condition'   => [
-						'header_menu_display' => 'yes',
+						'hello_header_menu_display' => 'yes',
 					],
 					'selectors' => [
 						'.site-header .menu li a' => 'color: {{VALUE}};',
@@ -312,10 +312,10 @@ class Hello_Settings_Header extends Tab_Base {
 			$this->add_group_control(
 				\Elementor\Group_Control_Typography::get_type(),
 				[
-					'name' => 'header_menu_typography',
+					'name' => 'hello_header_menu_typography',
 					'label' => __( 'Typography', 'hello-elementor' ),
 					'condition'   => [
-						'header_menu_display' => 'yes',
+						'hello_header_menu_display' => 'yes',
 					],
 					'selector' => '.site-header .menu li',
 				]
@@ -327,7 +327,7 @@ class Hello_Settings_Header extends Tab_Base {
 
 	public function on_save( $data ) {
 		// Save chosen menu to the WP settings.
-		$menu_id = $data['settings']['header_menu'];
+		$menu_id = $data['settings']['hello_header_menu'];
 		$locations = get_theme_mod( 'nav_menu_locations' );
 		$locations['menu-1'] = (int) $menu_id;
 		set_theme_mod( 'nav_menu_locations', $locations );

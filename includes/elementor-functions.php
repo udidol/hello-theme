@@ -44,6 +44,18 @@ function hello_elementor_get_setting( $setting_id ) {
 }
 
 /**
+ * Helper function to show/hide elements
+ *
+ * This works with switches, if the setting ID that has been passed is toggled on, we'll return show, otherwise we'll return hide
+ *
+ * @param  string $setting_id
+ * @return string|array same as the Elementor internal function does.
+ */
+function hello_show_or_hide( $setting_id ) {
+	return ( 'yes' === hello_elementor_get_setting( $setting_id ) ? 'show' : 'hide' );
+}
+
+/**
  * Helper function to translate the header layout setting into a class name.
  *
  * @return string

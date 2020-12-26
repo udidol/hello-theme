@@ -36,6 +36,10 @@ to override any of the settings in this section, add your styling code in the cu
 	font-size: inherit;
 }
 
+.hide {
+	display: none;
+}
+
 .gallery-caption {
 	display: block;
 	font-size: $sm-font-size;
