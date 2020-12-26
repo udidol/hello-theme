@@ -50,7 +50,7 @@ class Hello_Settings_Footer extends Tab_Base {
 			'hello_footer_title_display',
 			[
 				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label' => __( 'Site Name', 'hello-elementor' ),
+				'label' => __( 'Title', 'hello-elementor' ),
 				'default' => 'yes',
 			]
 		);

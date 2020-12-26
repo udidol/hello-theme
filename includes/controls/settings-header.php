@@ -52,19 +52,10 @@ class Hello_Settings_Header extends Tab_Base {
 		);
 
 		$this->add_control(
-			'hello_header_menu_display',
-			[
-				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label' => __( 'Menu', 'hello-elementor' ),
-				'default' => 'yes',
-			]
-		);
-
-		$this->add_control(
 			'hello_header_title_display',
 			[
 				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label' => __( 'Site Name', 'hello-elementor' ),
+				'label' => __( 'Title', 'hello-elementor' ),
 				'default' => 'yes',
 			]
 		);
@@ -74,6 +65,15 @@ class Hello_Settings_Header extends Tab_Base {
 			[
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label' => __( 'Tagline', 'hello-elementor' ),
+				'default' => 'yes',
+			]
+		);
+
+		$this->add_control(
+			'hello_header_menu_display',
+			[
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label' => __( 'Menu', 'hello-elementor' ),
 				'default' => 'yes',
 			]
 		);
