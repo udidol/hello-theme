@@ -9,6 +9,10 @@
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	position: relative;
+		
+	.site-navigation{
+		justify-content: end;
+	}
 
 	&.header-inverted{
 		flex-direction: row-reverse;

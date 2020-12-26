@@ -122,6 +122,10 @@ to override any of the settings in this section, add your styling code in the cu
   padding-top: 1rem;
   padding-bottom: 1rem;
   position: relative; }
+  .site-header .site-navigation {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: end; }
   .site-header.header-inverted {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: reverse;

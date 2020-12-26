@@ -62,17 +62,17 @@ function hello_show_or_hide( $setting_id ) {
  */
 function hello_get_header_layout_class() {
 
-	$header_layout = hello_elementor_get_setting( 'header_layout' );
+	$header_layout = hello_elementor_get_setting( 'hello_header_layout' );
 
-	$return = '';
+	$layout_class = '';
 
 	if ( 'inverted' === $header_layout ) {
-		$return = 'header-inverted';
+		$layout_class = 'header-inverted';
 	} elseif ( 'stacked' === $header_layout ) {
-		$return = 'header-stacked';
+		$layout_class = 'header-stacked';
 	}
 
-	return $return;
+	return $layout_class;
 }
 
 /**
@@ -82,17 +82,17 @@ function hello_get_header_layout_class() {
  */
 function hello_get_footer_layout_class() {
 
-	$header_layout = hello_elementor_get_setting( 'footer_layout' );
+	$footer_layout = hello_elementor_get_setting( 'hello_footer_layout' );
 
-	$return = '';
+	$layout_class = '';
 
-	if ( 'inverted' === $header_layout ) {
-		$return = 'footer-inverted';
-	} elseif ( 'centered' === $header_layout ) {
-		$return = 'footer-stacked';
+	if ( 'inverted' === $footer_layout ) {
+		$layout_class = 'footer-inverted';
+	} elseif ( 'centered' === $footer_layout ) {
+		$layout_class = 'footer-stacked';
 	}
 
-	return $return;
+	return $layout_class;
 }
 
 add_action( 'elementor/editor/after_enqueue_scripts', function() {
