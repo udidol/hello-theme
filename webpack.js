@@ -30,7 +30,8 @@ const moduleRules = {
 };
 
 const entry = {
-	'hello-elementor': path.resolve( __dirname, './assets/dev/js/editor/hello-editor.js' ),
+	'hello-editor': path.resolve( __dirname, './assets/dev/js/editor/hello-editor.js' ),
+	'hello-frontend': path.resolve( __dirname, './assets/dev/js/frontend/hello-frontend.js' ),
 };
 
 const webpackConfig = {
